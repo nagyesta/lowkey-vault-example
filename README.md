@@ -5,7 +5,7 @@
 
 # Lowkey Vault - Example
 
-This is an example for Lowkey Vault. The core of the application was generated
+This is an example for [Lowkey Vault](https://github.com/nagyesta/lowkey-vault). The core of the application was generated
 from [Spring Initializr](https://start.spring.io)
 The image is started with [Testcontainers](https://testcontainers.org/). The test cases are using
 [Azure Key Vault Key client](https://docs.microsoft.com/en-us/azure/key-vault/keys/quick-create-java)
