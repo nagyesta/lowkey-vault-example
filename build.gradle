@@ -32,7 +32,7 @@ dependencies {
 
 dependencyManagement {
     dependencies {
-        dependency 'com.azure:azure-security-keyvault-secrets:4.3.8'
+        dependency 'com.azure:azure-security-keyvault-secrets:4.4.1'
         dependency 'com.azure:azure-security-keyvault-keys:4.3.8'
         dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:1.1.0'
         dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-client:1.1.0'
