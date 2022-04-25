@@ -18,6 +18,10 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    lowkey
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.azure:azure-security-keyvault-keys'
@@ -28,6 +32,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers'
     testImplementation 'com.github.nagyesta.lowkey-vault:lowkey-vault-client'
+    lowkey 'com.github.nagyesta.lowkey-vault:lowkey-vault-app'
 }
 
 dependencyManagement {
@@ -36,9 +41,13 @@ dependencyManagement {
         dependency 'com.azure:azure-security-keyvault-keys:4.4.1'
         dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:1.1.0'
         dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-client:1.1.0'
+        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-app:1.1.0'
     }
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+    systemProperty("spring.profiles.active", project.hasProperty('docker') ? 'docker' : '')
+    systemProperty("lowkey-app-jar", configurations.lowkey.asFileTree.singleFile.absoluteFile.toString())
+    testLogging.showStandardStreams = true
 }

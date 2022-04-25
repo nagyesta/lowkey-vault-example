@@ -4,20 +4,17 @@ import com.azure.security.keyvault.keys.KeyClient;
 import com.azure.security.keyvault.keys.models.CreateRsaKeyOptions;
 import com.azure.security.keyvault.keys.models.KeyOperation;
 import com.azure.security.keyvault.secrets.SecretClient;
-import com.github.nagyesta.lowkeyvault.testcontainers.LowkeyVaultContainer;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.PropertySource;
 
 import java.nio.charset.StandardCharsets;
 
-@SpringBootTest(classes = {AzureAccessTestConfiguration.class, LowkeyVaultExampleApplication.class},
-        properties = "vault.url=https://localhost:8443")
+@SpringBootTest(classes = {
+        AzureAccessTestProcessConfiguration.class, AzureAccessTestDockerConfiguration.class, LowkeyVaultExampleApplication.class},
+        properties = {"vault.url=https://localhost:8443", "logging.level.root=WARN"})
 class LowkeyVaultExampleApplicationTests {
 
     @Autowired
