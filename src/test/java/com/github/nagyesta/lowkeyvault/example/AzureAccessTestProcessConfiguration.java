@@ -27,8 +27,8 @@ public class AzureAccessTestProcessConfiguration implements DisposableBean {
 
     public AzureAccessTestProcessConfiguration() throws IOException {
         final String jarName = System.getProperty("lowkey-app-jar");
-        process = new ProcessBuilder("java", "-jar", jarName).start();
-        LOGGER.warn("Starting Jar process (pid: {}): java -jar {}", process.pid(), jarName);
+        process = new ProcessBuilder("java", "-jar", jarName, "&").start();
+        LOGGER.warn("Starting Jar process (pid: {}): java -jar {} &", process.pid(), jarName);
     }
 
     @Bean
