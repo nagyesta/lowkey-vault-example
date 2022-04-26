@@ -39,15 +39,17 @@ dependencyManagement {
     dependencies {
         dependency 'com.azure:azure-security-keyvault-secrets:4.4.1'
         dependency 'com.azure:azure-security-keyvault-keys:4.4.1'
-        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:1.1.0'
-        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-client:1.1.0'
-        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-app:1.1.0'
+        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:1.2.0'
+        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-client:1.2.0'
+        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-app:1.2.0'
     }
 }
 
 tasks.named('test') {
     useJUnitPlatform()
-    systemProperty("spring.profiles.active", project.hasProperty('docker') ? 'docker' : '')
+    systemProperty("spring.profiles.active", project.hasProperty('docker')
+            ? 'docker'
+            : project.hasProperty('process') ? 'process' : '')
     systemProperty("lowkey-app-jar", configurations.lowkey.asFileTree.singleFile.absoluteFile.toString())
     testLogging.showStandardStreams = true
 }

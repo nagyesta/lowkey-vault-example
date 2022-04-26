@@ -18,4 +18,37 @@ and [Azure Key Vault Secret client](https://docs.microsoft.com/en-us/azure/key-v
 * [Secret "repository"](src/main/java/com/github/nagyesta/lowkeyvault/example/impl/AzureSecretRepositoryImpl.java)
 * [Test configuration (Docker mode)](src/test/java/com/github/nagyesta/lowkeyvault/example/AzureAccessTestDockerConfiguration.java)
 * [Test configuration (Jar process mode)](src/test/java/com/github/nagyesta/lowkeyvault/example/AzureAccessTestProcessConfiguration.java)
+* [Test configuration (External Jar)](src/test/java/com/github/nagyesta/lowkeyvault/example/AzureAccessTestExternalStartConfiguration.java)
 * [JUnit Jupiter Test](src/test/java/com/github/nagyesta/lowkeyvault/example/LowkeyVaultExampleApplicationTests.java)
+
+### Usage
+
+#### Docker
+
+Run the tests and let the context run Lowkey Vault using Docker:
+
+```shell
+./gradlew clean build -Pdocker
+```
+
+#### Jar
+
+Run the tests and let the context run Lowkey Vault using Jar:
+
+```shell
+./gradlew clean build -Pprocess
+```
+
+#### External
+
+Start Lowkey Vault manually:
+
+```shell
+java -jar lowkey-vault-app-1.2.0.jar
+```
+
+Run the tests using the extenally started Lowkey Vault:
+
+```shell
+./gradlew clean build
+```

@@ -13,7 +13,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.nio.charset.StandardCharsets;
 
 @SpringBootTest(classes = {
-        AzureAccessTestProcessConfiguration.class, AzureAccessTestDockerConfiguration.class, LowkeyVaultExampleApplication.class},
+        AzureAccessTestProcessConfiguration.class,
+        AzureAccessTestDockerConfiguration.class,
+        AzureAccessTestExternalStartConfiguration.class,
+        LowkeyVaultExampleApplication.class},
         properties = {"vault.url=https://localhost:8443", "logging.level.root=WARN"})
 class LowkeyVaultExampleApplicationTests {
 
