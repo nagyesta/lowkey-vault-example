@@ -8,6 +8,12 @@ import org.springframework.context.annotation.Profile;
 
 import java.io.IOException;
 
+/**
+ * This example show how Lowkey Vault can be started as a Jar subprocess.
+ * <br />
+ * Windows has issues with this approach.
+ * The Jar is either not started properly or it tends to remain running after finishing.
+ */
 @Profile("process")
 @Configuration
 public class AzureAccessTestProcessConfiguration extends AzureAccessTestExternalStartConfiguration implements DisposableBean {

@@ -3,10 +3,8 @@ package com.github.nagyesta.lowkeyvault.example;
 import com.azure.core.credential.BasicAuthenticationCredential;
 import com.azure.core.credential.TokenCredential;
 import com.azure.core.http.HttpClient;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.nagyesta.lowkeyvault.http.ApacheHttpClientProvider;
 import com.github.nagyesta.lowkeyvault.http.AuthorityOverrideFunction;
-import com.github.nagyesta.lowkeyvault.http.management.LowkeyVaultManagementClient;
 import com.github.nagyesta.lowkeyvault.testcontainers.LowkeyVaultContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +19,13 @@ import org.testcontainers.utility.DockerImageName;
 
 import java.util.Collections;
 
+/**
+ * This example shows two separate things:
+ * <ol>
+ * <li>How Lowkey Vault container can be started with Testcontainers</li>
+ * <li>How the Lowkey Vault Client can be used</li>
+ * </ol>
+ */
 @Profile("docker")
 @Configuration
 public class AzureAccessTestDockerConfiguration implements DisposableBean {
@@ -29,7 +34,7 @@ public class AzureAccessTestDockerConfiguration implements DisposableBean {
     private final LowkeyVaultContainer lowkeyVaultContainer;
 
     public AzureAccessTestDockerConfiguration() {
-        final DockerImageName imageName = DockerImageName.parse("nagyesta/lowkey-vault:1.2.0");
+        final DockerImageName imageName = DockerImageName.parse("nagyesta/lowkey-vault:1.2.2");
         lowkeyVaultContainer = new LowkeyVaultContainer(imageName, Collections.emptySet())
                 .withImagePullPolicy(PullPolicy.defaultPolicy())
                 .withExposedPorts(8443);
@@ -59,13 +64,8 @@ public class AzureAccessTestDockerConfiguration implements DisposableBean {
         return apacheHttpClientProvider.createInstance();
     }
 
-    @Bean
-    public LowkeyVaultManagementClient lowkeyVaultManagementClient(@Autowired ApacheHttpClientProvider apacheHttpClientProvider) {
-        return apacheHttpClientProvider.getLowkeyVaultManagementClient(new ObjectMapper());
-    }
-
     @Override
-    public void destroy() throws Exception {
+    public void destroy() {
         LOGGER.warn("Stopping Docker container: {}", lowkeyVaultContainer.getContainerName());
         lowkeyVaultContainer.stop();
     }
