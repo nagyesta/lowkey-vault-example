@@ -39,9 +39,9 @@ dependencyManagement {
     dependencies {
         dependency 'com.azure:azure-security-keyvault-secrets:4.4.1'
         dependency 'com.azure:azure-security-keyvault-keys:4.4.1'
-        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:1.2.0'
-        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-client:1.2.0'
-        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-app:1.2.0'
+        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:1.2.2'
+        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-client:1.2.2'
+        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-app:1.2.2'
     }
 }
 
@@ -51,5 +51,8 @@ tasks.named('test') {
             ? 'docker'
             : project.hasProperty('process') ? 'process' : '')
     systemProperty("lowkey-app-jar", configurations.lowkey.asFileTree.singleFile.absoluteFile.toString())
+    systemProperty("javax.net.ssl.trustStore", file("$projectDir/src/test/resources/lowkey-vault-keystore.p12"))
+    systemProperty("javax.net.ssl.trustStorePassword", "changeit")
+    systemProperty("javax.net.ssl.trustStoreType", "PKCS12")
     testLogging.showStandardStreams = true
 }
