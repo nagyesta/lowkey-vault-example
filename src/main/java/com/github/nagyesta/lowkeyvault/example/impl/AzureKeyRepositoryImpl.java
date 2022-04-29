@@ -13,24 +13,27 @@ import org.springframework.stereotype.Component;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Function;
 
+/**
+ * Implements Azure Key Vault key access.
+ */
 @Component
 public class AzureKeyRepositoryImpl implements AzureKeyRepository {
 
     private final KeyClient keyClient;
     private final Function<JsonWebKey, CryptographyClient> cryptographyClientProvider;
     @Value("${key.name}")
-    private String keyName;
+    private String vaultKeyName;
 
     @Autowired
-    public AzureKeyRepositoryImpl(KeyClient keyClient,
-                                  Function<JsonWebKey, CryptographyClient> cryptographyClientProvider) {
+    public AzureKeyRepositoryImpl(final KeyClient keyClient,
+                                  final Function<JsonWebKey, CryptographyClient> cryptographyClientProvider) {
         this.keyClient = keyClient;
         this.cryptographyClientProvider = cryptographyClientProvider;
     }
 
     @Override
-    public String decrypt(byte[] ciphertext) {
-        final KeyVaultKey key = keyClient.getKey(keyName);
+    public String decrypt(final byte[] ciphertext) {
+        final KeyVaultKey key = keyClient.getKey(vaultKeyName);
         final byte[] plainText = cryptographyClientProvider.apply(key.getKey())
                 .decrypt(EncryptionAlgorithm.RSA_OAEP_256, ciphertext)
                 .getPlainText();
@@ -38,11 +41,10 @@ public class AzureKeyRepositoryImpl implements AzureKeyRepository {
     }
 
     @Override
-    public byte[] encrypt(String plainText) {
-        final KeyVaultKey key = keyClient.getKey(keyName);
-        final byte[] ciphertext = cryptographyClientProvider.apply(key.getKey())
+    public byte[] encrypt(final String plainText) {
+        final KeyVaultKey key = keyClient.getKey(vaultKeyName);
+        return cryptographyClientProvider.apply(key.getKey())
                 .encrypt(EncryptionAlgorithm.RSA_OAEP_256, plainText.getBytes(StandardCharsets.UTF_8))
                 .getCipherText();
-        return ciphertext;
     }
 }

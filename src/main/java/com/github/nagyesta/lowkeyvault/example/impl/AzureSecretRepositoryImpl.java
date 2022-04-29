@@ -6,34 +6,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implements Azure Key Vault secret access.
+ */
 @Component
 public class AzureSecretRepositoryImpl implements AzureSecretRepository {
 
     private final SecretClient secretClient;
     @Value("${secret.name.user}")
-    private String userName;
+    private String vaultSecretNameForDbUserName;
     @Value("${secret.name.pass}")
-    private String password;
+    private String vaultSecretNameForDbPassword;
     @Value("${secret.name.url}")
-    private String connectionUrl;
+    private String vaultSecretNameForDbConnectionUrl;
 
     @Autowired
-    public AzureSecretRepositoryImpl(SecretClient secretClient) {
+    public AzureSecretRepositoryImpl(final SecretClient secretClient) {
         this.secretClient = secretClient;
     }
 
     @Override
     public String getDatabaseConnectionUrl() {
-        return secretClient.getSecret(connectionUrl).getValue();
+        return secretClient.getSecret(vaultSecretNameForDbConnectionUrl).getValue();
     }
 
     @Override
     public String getDatabaseUserName() {
-        return secretClient.getSecret(userName).getValue();
+        return secretClient.getSecret(vaultSecretNameForDbUserName).getValue();
     }
 
     @Override
     public String getDatabasePassword() {
-        return secretClient.getSecret(password).getValue();
+        return secretClient.getSecret(vaultSecretNameForDbPassword).getValue();
     }
 }
