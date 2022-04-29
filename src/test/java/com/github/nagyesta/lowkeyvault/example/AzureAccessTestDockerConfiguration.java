@@ -23,21 +23,20 @@ import java.util.Collections;
  * This example shows two separate things:
  * <ol>
  * <li>How Lowkey Vault container can be started with Testcontainers</li>
- * <li>How the Lowkey Vault Client can be used</li>
+ * <li>How the Lowkey Vault Client can be used.</li>
  * </ol>
  */
 @Profile("docker")
 @Configuration
 public class AzureAccessTestDockerConfiguration implements DisposableBean {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(AzureAccessTestDockerConfiguration.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AzureAccessTestDockerConfiguration.class);
     private final LowkeyVaultContainer lowkeyVaultContainer;
 
     public AzureAccessTestDockerConfiguration() {
         final DockerImageName imageName = DockerImageName.parse("nagyesta/lowkey-vault:1.2.2");
         lowkeyVaultContainer = new LowkeyVaultContainer(imageName, Collections.emptySet())
-                .withImagePullPolicy(PullPolicy.defaultPolicy())
-                .withExposedPorts(8443);
+                .withImagePullPolicy(PullPolicy.defaultPolicy());
         lowkeyVaultContainer.start();
         LOGGER.warn("Started container: {} {}", imageName, lowkeyVaultContainer.getContainerName());
     }
@@ -54,13 +53,13 @@ public class AzureAccessTestDockerConfiguration implements DisposableBean {
     }
 
     @Bean
-    public ApacheHttpClientProvider apacheHttpClientProvider(@Autowired AuthorityOverrideFunction overrideFunction) {
+    public ApacheHttpClientProvider apacheHttpClientProvider(@Autowired final AuthorityOverrideFunction overrideFunction) {
         return new ApacheHttpClientProvider(lowkeyVaultContainer.getDefaultVaultBaseUrl(), overrideFunction);
     }
 
     @Bean
     @Primary
-    public HttpClient httpClient(@Autowired ApacheHttpClientProvider apacheHttpClientProvider) {
+    public HttpClient httpClient(@Autowired final ApacheHttpClientProvider apacheHttpClientProvider) {
         return apacheHttpClientProvider.createInstance();
     }
 

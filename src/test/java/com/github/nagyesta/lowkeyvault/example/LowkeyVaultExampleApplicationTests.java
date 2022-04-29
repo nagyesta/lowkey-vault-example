@@ -20,6 +20,7 @@ import java.nio.charset.StandardCharsets;
         properties = {"vault.url=https://localhost:8443", "logging.level.root=WARN"})
 class LowkeyVaultExampleApplicationTests {
 
+    private static final int RSA_KEY_SIZE = 2048;
     @Autowired
     private AzureKeyRepository keyRepository;
     @Autowired
@@ -65,7 +66,7 @@ class LowkeyVaultExampleApplicationTests {
         final String secret = "a secret message";
         keyClient.createRsaKey(new CreateRsaKeyOptions(keyName)
                 .setKeyOperations(KeyOperation.ENCRYPT, KeyOperation.DECRYPT, KeyOperation.WRAP_KEY, KeyOperation.UNWRAP_KEY)
-                .setKeySize(2048));
+                .setKeySize(RSA_KEY_SIZE));
 
         //when
         final byte[] encrypted = keyRepository.encrypt(secret);

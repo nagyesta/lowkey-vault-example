@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.6.7'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'checkstyle'
 }
 
 group = 'com.github.nagyesta'
@@ -21,6 +22,16 @@ repositories {
 configurations {
     lowkey
 }
+tasks.withType(Checkstyle) {
+    configProperties = [base_dir: rootDir.toString(), cache_file: file("${buildDir}/checkstyle/cacheFile")]
+    reports {
+        xml.required.set(false)
+        html.required.set(true)
+        html.stylesheet resources.text
+                .fromFile(rootProject.file('config/checkstyle/checkstyle-stylesheet.xsl') as String)
+    }
+}
+checkstyle.toolVersion = '9.2.1'
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'

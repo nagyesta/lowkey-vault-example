@@ -13,6 +13,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configures Azure Key Vault clients using the provided dependencies.
+ */
 @Configuration
 public class AzureConfiguration {
 
@@ -22,7 +25,7 @@ public class AzureConfiguration {
     private String vaultUrl;
 
     @Autowired
-    public AzureConfiguration(TokenCredential tokenCredential, HttpClient httpClient) {
+    public AzureConfiguration(final TokenCredential tokenCredential, final HttpClient httpClient) {
         this.tokenCredential = tokenCredential;
         this.httpClient = httpClient;
     }

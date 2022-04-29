@@ -8,18 +8,21 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configures Azure Key Vault access using the provided parameters.
+ */
 @Configuration
 public class AzureAccessConfiguration {
 
     @Value("${vault.user}")
-    private String userName;
+    private String keyVaultUserName;
     @Value("${vault.pass}")
-    private String password;
+    private String keyVaultPassword;
 
     @Bean
     @ConditionalOnMissingBean(type = "com.azure.core.credential.TokenCredential")
     public TokenCredential tokenCredential() {
-        return new BasicAuthenticationCredential(userName, password);
+        return new BasicAuthenticationCredential(keyVaultUserName, keyVaultPassword);
     }
 
     @Bean

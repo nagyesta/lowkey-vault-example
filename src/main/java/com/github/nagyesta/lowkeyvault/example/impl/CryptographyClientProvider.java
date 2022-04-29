@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 
+/**
+ * Function that can provide a {@link CryptographyClient} based on a {@link JsonWebKey}.
+ */
 @Component
 public class CryptographyClientProvider implements Function<JsonWebKey, CryptographyClient> {
 
@@ -19,13 +22,13 @@ public class CryptographyClientProvider implements Function<JsonWebKey, Cryptogr
     private final TokenCredential tokenCredential;
 
     @Autowired
-    public CryptographyClientProvider(HttpClient httpClient, TokenCredential tokenCredential) {
+    public CryptographyClientProvider(final HttpClient httpClient, final TokenCredential tokenCredential) {
         this.httpClient = httpClient;
         this.tokenCredential = tokenCredential;
     }
 
     @Override
-    public CryptographyClient apply(JsonWebKey jsonWebKey) {
+    public CryptographyClient apply(final JsonWebKey jsonWebKey) {
         return new CryptographyClientBuilder()
                 .serviceVersion(CryptographyServiceVersion.V7_2)
                 .keyIdentifier(jsonWebKey.getId())

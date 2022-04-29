@@ -28,7 +28,7 @@ public class AzureAccessTestProcessConfiguration extends AzureAccessTestExternal
     }
 
     @Override
-    public void destroy() throws Exception {
+    public void destroy() {
         if (process != null && process.isAlive()) {
             LOGGER.warn("Stopping Jar process: {}", process.pid());
             process.destroyForcibly();
