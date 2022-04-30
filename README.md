@@ -45,7 +45,7 @@ Run the tests and let the context run Lowkey Vault using Jar:
 Start Lowkey Vault manually:
 
 ```shell
-java -jar lowkey-vault-app-1.2.0.jar
+java -jar lowkey-vault-app-<version>.jar
 ```
 
 Run the tests using the extenally started Lowkey Vault:
