@@ -35,7 +35,7 @@ public class AzureConfiguration {
         return new KeyClientBuilder()
                 .vaultUrl(vaultUrl)
                 .httpClient(httpClient)
-                .serviceVersion(KeyServiceVersion.V7_2)
+                .serviceVersion(KeyServiceVersion.V7_3)
                 .credential(tokenCredential)
                 .buildClient();
     }
@@ -45,7 +45,7 @@ public class AzureConfiguration {
         return new SecretClientBuilder()
                 .vaultUrl(vaultUrl)
                 .httpClient(httpClient)
-                .serviceVersion(SecretServiceVersion.V7_2)
+                .serviceVersion(SecretServiceVersion.V7_3)
                 .credential(tokenCredential)
                 .buildClient();
     }
