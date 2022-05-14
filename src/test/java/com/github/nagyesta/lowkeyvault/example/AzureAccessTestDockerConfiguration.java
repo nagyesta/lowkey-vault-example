@@ -34,7 +34,8 @@ public class AzureAccessTestDockerConfiguration implements DisposableBean {
     private final LowkeyVaultContainer lowkeyVaultContainer;
 
     public AzureAccessTestDockerConfiguration() {
-        final DockerImageName imageName = DockerImageName.parse("nagyesta/lowkey-vault:1.3.0");
+        final String version = System.getProperty("lowkey-version");
+        final DockerImageName imageName = DockerImageName.parse("nagyesta/lowkey-vault:" + version);
         lowkeyVaultContainer = new LowkeyVaultContainer(imageName, Collections.emptySet())
                 .withImagePullPolicy(PullPolicy.defaultPolicy());
         lowkeyVaultContainer.start();
