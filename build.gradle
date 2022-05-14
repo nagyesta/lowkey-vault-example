@@ -1,6 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.7'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    alias(libs.plugins.spring.boot)
     id 'java'
     id 'checkstyle'
 }
@@ -31,29 +30,18 @@ tasks.withType(Checkstyle) {
                 .fromFile(rootProject.file('config/checkstyle/checkstyle-stylesheet.xsl') as String)
     }
 }
-checkstyle.toolVersion = '9.2.1'
+checkstyle.toolVersion = libs.versions.checkstyle.get()
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'com.azure:azure-security-keyvault-keys'
-    implementation 'com.azure:azure-security-keyvault-secrets'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers'
-    testImplementation 'com.github.nagyesta.lowkey-vault:lowkey-vault-client'
-    lowkey 'com.github.nagyesta.lowkey-vault:lowkey-vault-app'
-}
-
-dependencyManagement {
-    dependencies {
-        dependency 'com.azure:azure-security-keyvault-secrets:4.4.2'
-        dependency 'com.azure:azure-security-keyvault-keys:4.4.2'
-        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:1.4.0'
-        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-client:1.4.0'
-        dependency 'com.github.nagyesta.lowkey-vault:lowkey-vault-app:1.4.0'
-    }
+    implementation libs.spring.boot.starter.web
+    implementation libs.bundles.azure
+    compileOnly libs.lombok
+    annotationProcessor libs.spring.boot.configuration.processor
+    annotationProcessor libs.lombok
+    testImplementation libs.spring.boot.starter.test
+    testImplementation libs.lowkey.vault.testcontainers
+    testImplementation libs.lowkey.vault.client
+    lowkey libs.lowkey.vault.app
 }
 
 tasks.named('test') {
@@ -62,6 +50,7 @@ tasks.named('test') {
             ? 'docker'
             : project.hasProperty('process') ? 'process' : '')
     systemProperty("lowkey-app-jar", configurations.lowkey.asFileTree.singleFile.absoluteFile.toString())
+    systemProperty("lowkey-version", libs.versions.lowkeyVault.get())
     systemProperty("javax.net.ssl.trustStore", file("$projectDir/src/test/resources/lowkey-vault-keystore.p12"))
     systemProperty("javax.net.ssl.trustStorePassword", "changeit")
     systemProperty("javax.net.ssl.trustStoreType", "PKCS12")

@@ -1,0 +1,30 @@
+[versions]
+springBoot = "2.6.7"
+azureKeyVaultClient = "4.4.2"
+lowkeyVault = "1.4.1"
+checkstyle = "9.2.1"
+lombok = "1.18.24"
+
+springBootPlugin = "2.6.7"
+
+[libraries]
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "springBoot" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "springBoot" }
+
+azure-security-keyvault-secrets = { module = "com.azure:azure-security-keyvault-secrets", version.ref = "azureKeyVaultClient" }
+azure-security-keyvault-keys = { module = "com.azure:azure-security-keyvault-keys", version.ref = "azureKeyVaultClient" }
+
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok"}
+spring-boot-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "springBoot" }
+
+lowkey-vault-app = { module = "com.github.nagyesta.lowkey-vault:lowkey-vault-app", version.ref = "lowkeyVault" }
+lowkey-vault-client = { module = "com.github.nagyesta.lowkey-vault:lowkey-vault-client", version.ref = "lowkeyVault" }
+lowkey-vault-testcontainers = { module = "com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers", version.ref = "lowkeyVault" }
+
+[bundles]
+azure = [
+    "azure-security-keyvault-secrets", "azure-security-keyvault-keys"
+]
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "springBootPlugin" }
