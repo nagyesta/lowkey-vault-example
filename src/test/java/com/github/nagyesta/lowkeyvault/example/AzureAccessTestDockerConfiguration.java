@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Profile;
 import org.testcontainers.images.PullPolicy;
 import org.testcontainers.utility.DockerImageName;
 
-import java.util.Collections;
+import static com.github.nagyesta.lowkeyvault.testcontainers.LowkeyVaultContainerBuilder.lowkeyVault;
 
 /**
  * This example shows two separate things:
@@ -36,7 +36,8 @@ public class AzureAccessTestDockerConfiguration implements DisposableBean {
     public AzureAccessTestDockerConfiguration() {
         final String version = System.getProperty("lowkey-version");
         final DockerImageName imageName = DockerImageName.parse("nagyesta/lowkey-vault:" + version);
-        lowkeyVaultContainer = new LowkeyVaultContainer(imageName, Collections.emptySet())
+        lowkeyVaultContainer = lowkeyVault(imageName)
+                .build()
                 .withImagePullPolicy(PullPolicy.defaultPolicy());
         lowkeyVaultContainer.start();
         LOGGER.warn("Started container: {} {}", imageName, lowkeyVaultContainer.getContainerName());
