@@ -1,7 +1,7 @@
 [versions]
 springBoot = "2.7.1"
 azureKeyVaultClient = "4.4.4"
-lowkeyVault = "1.8.10"
+lowkeyVault = "1.8.14"
 checkstyle = "9.2.1"
 lombok = "1.18.24"
 
