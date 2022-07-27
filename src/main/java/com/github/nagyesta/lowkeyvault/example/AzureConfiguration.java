@@ -19,7 +19,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AzureConfiguration {
 
+    /**
+     * Allows us to use either the real azure credentials or the dummy credentials depending on environment config.
+     */
     private final TokenCredential tokenCredential;
+    /**
+     * Allows us to use custom HTTP client implementations depending on the environment.
+     */
     private final HttpClient httpClient;
     @Value("${vault.url}")
     private String vaultUrl;

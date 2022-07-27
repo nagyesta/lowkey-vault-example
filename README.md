@@ -23,6 +23,8 @@ and [Azure Key Vault Secret client](https://docs.microsoft.com/en-us/azure/key-v
 * [Test configuration (External Jar)](src/test/java/com/github/nagyesta/lowkeyvault/example/AzureAccessTestExternalStartConfiguration.java)
 * [JUnit Jupiter Test](src/test/java/com/github/nagyesta/lowkeyvault/example/LowkeyVaultExampleApplicationTests.java)
 
+Note: In order to better understand what is needed in general to make similar examples work, please find a generic overview [here](https://github.com/nagyesta/lowkey-vault/wiki/Example:-How-can-you-use-Lowkey-Vault-in-your-tests).
+
 ### Usage
 
 #### Docker

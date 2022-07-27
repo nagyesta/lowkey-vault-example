@@ -19,12 +19,22 @@ public class AzureAccessConfiguration {
     @Value("${vault.pass}")
     private String keyVaultPassword;
 
+    /**
+     * Default credential.
+     *
+     * @return credential
+     */
     @Bean
     @ConditionalOnMissingBean(type = "com.azure.core.credential.TokenCredential")
     public TokenCredential tokenCredential() {
         return new BasicAuthenticationCredential(keyVaultUserName, keyVaultPassword);
     }
 
+    /**
+     * Default HTTP client.
+     *
+     * @return client
+     */
     @Bean
     @ConditionalOnMissingBean(type = "com.azure.core.http.HttpClient")
     public HttpClient httpClient() {
