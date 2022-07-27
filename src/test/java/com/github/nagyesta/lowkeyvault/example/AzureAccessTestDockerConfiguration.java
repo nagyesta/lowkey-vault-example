@@ -43,22 +43,41 @@ public class AzureAccessTestDockerConfiguration implements DisposableBean {
         LOGGER.warn("Started container: {} {}", imageName, lowkeyVaultContainer.getContainerName());
     }
 
+    /**
+     * Bypass authantication as Lowkey Vault does not need/support authentication with the real service.
+     */
     @Bean
     @Primary
     public TokenCredential tokenCredential() {
         return new BasicAuthenticationCredential(lowkeyVaultContainer.getUsername(), lowkeyVaultContainer.getPassword());
     }
 
+    /**
+     * Set up the routing using logical and physical addresss translation provided by the Lowkey Vault Client.
+     * Optional: you can use the built-in HTTP client if you are using only one vault and you don't need other
+     * Lowkey Vault Client features either.
+     * @see <a href="https://github.com/nagyesta/lowkey-vault/blob/main/lowkey-vault-client/README.md">Lowkey Vault Client features</a>
+     */
     @Bean
     public AuthorityOverrideFunction overrideFunction() {
         return new AuthorityOverrideFunction(lowkeyVaultContainer.getDefaultVaultAuthority(), lowkeyVaultContainer.getEndpointAuthority());
     }
 
+    /**
+     * Create a HTTP provider using the implementation from Lowkey Vault Client to use the extra features of the client.
+     * Optional: If you don't need Lowkey Vault Client features, you can simply use the default HTTP client provider.
+     * @see <a href="https://github.com/nagyesta/lowkey-vault/blob/main/lowkey-vault-client/README.md">Lowkey Vault Client features</a>
+     */
     @Bean
     public ApacheHttpClientProvider apacheHttpClientProvider(@Autowired final AuthorityOverrideFunction overrideFunction) {
         return new ApacheHttpClientProvider(lowkeyVaultContainer.getDefaultVaultBaseUrl(), overrideFunction);
     }
 
+    /**
+     * Create a HTTP client using the previous beans. Spring will pass this to the Azure client.
+     * Optional: you can use the built-in HTTP client if you don't need the Lowkey Vault Client fetaures.
+     * @see <a href="https://github.com/nagyesta/lowkey-vault/blob/main/lowkey-vault-client/README.md">Lowkey Vault Client features</a>
+     */
     @Bean
     @Primary
     public HttpClient httpClient(@Autowired final ApacheHttpClientProvider apacheHttpClientProvider) {
