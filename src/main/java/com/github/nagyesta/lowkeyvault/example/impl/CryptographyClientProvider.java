@@ -17,8 +17,14 @@ import java.util.function.Function;
 @Component
 public class CryptographyClientProvider implements Function<JsonWebKey, CryptographyClient> {
 
+    /**
+     * Allows us to use custom HTTP client implementations depending on the environment.
+     */
     private final HttpClient httpClient;
 
+    /**
+     * Allows us to use either the real azure credentials or the dummy credentials depending on environment config.
+     */
     private final TokenCredential tokenCredential;
 
     @Autowired

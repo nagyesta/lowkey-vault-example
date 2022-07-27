@@ -44,7 +44,9 @@ public class AzureAccessTestDockerConfiguration implements DisposableBean {
     }
 
     /**
-     * Bypass authantication as Lowkey Vault does not need/support authentication with the real service.
+     * Bypass authentication as Lowkey Vault does not need/support authentication with the real service.
+     *
+     * @return dummy credential
      */
     @Bean
     @Primary
@@ -56,6 +58,8 @@ public class AzureAccessTestDockerConfiguration implements DisposableBean {
      * Set up the routing using logical and physical addresss translation provided by the Lowkey Vault Client.
      * Optional: you can use the built-in HTTP client if you are using only one vault and you don't need other
      * Lowkey Vault Client features either.
+     *
+     * @return override function
      * @see <a href="https://github.com/nagyesta/lowkey-vault/blob/main/lowkey-vault-client/README.md">Lowkey Vault Client features</a>
      */
     @Bean
@@ -64,8 +68,11 @@ public class AzureAccessTestDockerConfiguration implements DisposableBean {
     }
 
     /**
-     * Create a HTTP provider using the implementation from Lowkey Vault Client to use the extra features of the client.
+     * Creates an HTTP provider using the implementation from Lowkey Vault Client to use the extra features of the client.
      * Optional: If you don't need Lowkey Vault Client features, you can simply use the default HTTP client provider.
+     *
+     * @param overrideFunction the override function translating between logical and physical addresses.
+     * @return HTTP client provider
      * @see <a href="https://github.com/nagyesta/lowkey-vault/blob/main/lowkey-vault-client/README.md">Lowkey Vault Client features</a>
      */
     @Bean
@@ -75,7 +82,10 @@ public class AzureAccessTestDockerConfiguration implements DisposableBean {
 
     /**
      * Create a HTTP client using the previous beans. Spring will pass this to the Azure client.
-     * Optional: you can use the built-in HTTP client if you don't need the Lowkey Vault Client fetaures.
+     * Optional: you can use the built-in HTTP client if you don't need the Lowkey Vault Client features.
+     *
+     * @param apacheHttpClientProvider The custom HTTP client provider supporting Lowkey Vault features.
+     * @return HTTP client
      * @see <a href="https://github.com/nagyesta/lowkey-vault/blob/main/lowkey-vault-client/README.md">Lowkey Vault Client features</a>
      */
     @Bean
