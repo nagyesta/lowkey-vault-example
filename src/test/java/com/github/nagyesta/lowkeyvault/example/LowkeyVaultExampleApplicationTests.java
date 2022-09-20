@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
         AzureAccessTestDockerConfiguration.class,
         AzureAccessTestExternalStartConfiguration.class,
         LowkeyVaultExampleApplication.class},
-        properties = {"vault.url=https://localhost:8443", "logging.level.root=WARN"})
+        properties = {"vault.url=https://localhost:8443", "vault.disable-challenge-resource-verification=true", "logging.level.root=WARN"})
 class LowkeyVaultExampleApplicationTests {
 
     private static final int RSA_KEY_SIZE = 2048;
