@@ -1,11 +1,11 @@
 [versions]
-springBoot = "2.7.6"
+springBoot = "2.7.7"
 azureKeyVaultClient = "4.5.2"
 lowkeyVault = "1.14.12"
 checkstyle = "9.2.1"
 lombok = "1.18.24"
 
-springBootPlugin = "2.7.6"
+springBootPlugin = "2.7.7"
 
 [libraries]
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "springBoot" }
