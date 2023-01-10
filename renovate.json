@@ -10,6 +10,5 @@
   "commitMessageSuffix": "{patch}",
   "github-actions": {
     "pinDigests": true
-  },
-  "ignorePaths": [ ".github/workflows/**" ]
+  }
 }
