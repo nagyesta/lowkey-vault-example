@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Profile;
  */
 @Profile({"!docker & !process"})
 @Configuration
-public class AzureAccessTestExternalStartConfiguration {
+public class AzureAccessTestExternalStartConfiguration extends AzureAccessCommonTestConfiguration {
 
 }

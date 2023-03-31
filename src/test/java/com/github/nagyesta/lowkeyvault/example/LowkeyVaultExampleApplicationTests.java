@@ -1,5 +1,10 @@
 package com.github.nagyesta.lowkeyvault.example;
 
+import com.azure.security.keyvault.certificates.CertificateClient;
+import com.azure.security.keyvault.certificates.models.CertificateContentType;
+import com.azure.security.keyvault.certificates.models.CertificateKeyCurveName;
+import com.azure.security.keyvault.certificates.models.CertificateKeyType;
+import com.azure.security.keyvault.certificates.models.CertificatePolicy;
 import com.azure.security.keyvault.keys.KeyClient;
 import com.azure.security.keyvault.keys.models.CreateRsaKeyOptions;
 import com.azure.security.keyvault.keys.models.KeyOperation;
@@ -11,6 +16,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.nio.charset.StandardCharsets;
+import java.security.cert.X509Certificate;
+import java.security.interfaces.ECPrivateKey;
 
 @SpringBootTest(classes = {
         AzureAccessTestProcessConfiguration.class,
@@ -26,9 +33,13 @@ class LowkeyVaultExampleApplicationTests {
     @Autowired
     private AzureSecretRepository secretRepository;
     @Autowired
+    private AzureCertificateRepository certificateRepository;
+    @Autowired
     private KeyClient keyClient;
     @Autowired
     private SecretClient secretClient;
+    @Autowired
+    private CertificateClient certificateClient;
     @Value("${key.name}")
     private String keyName;
     @Value("${secret.name.user}")
@@ -37,6 +48,8 @@ class LowkeyVaultExampleApplicationTests {
     private String password;
     @Value("${secret.name.url}")
     private String connectionUrl;
+    @Value("${certificate.name}")
+    private String certificateName;
 
     @Test
     void testSecretRepositoryShouldFetchDBCredentialsWhenCalled() {
@@ -59,7 +72,6 @@ class LowkeyVaultExampleApplicationTests {
         Assertions.assertEquals(url, connectionUrl);
     }
 
-
     @Test
     void testKeyRepositoryEncryptThenDecryptShouldResultInOriginalTextWhenCalled() {
         //given
@@ -75,6 +87,25 @@ class LowkeyVaultExampleApplicationTests {
         //then
         Assertions.assertEquals(secret, decrypted);
         Assertions.assertNotEquals(encrypted.length, decrypted.getBytes(StandardCharsets.UTF_8).length);
+    }
+
+    @Test
+    void testCertificateRepositoryGetCertificateAndGetPrivateKeyShouldReturnGeneratedCertificateAndKeyWhenCalled() {
+        //given
+        final String subject = "CN=example.com";
+        final CertificatePolicy policy = new CertificatePolicy("Self", subject)
+                .setKeyType(CertificateKeyType.EC)
+                .setKeyCurveName(CertificateKeyCurveName.P_256)
+                .setContentType(CertificateContentType.PKCS12);
+        certificateClient.beginCreateCertificate(certificateName, policy).waitForCompletion();
+
+        //when
+        final X509Certificate actualCertificate = certificateRepository.getCertificate();
+        final ECPrivateKey actualPrivateKey = certificateRepository.getPrivateKey();
+
+        //then
+        Assertions.assertEquals(subject, actualCertificate.getSubjectDN().getName());
+        Assertions.assertEquals(CertificateKeyType.EC.toString(), actualPrivateKey.getAlgorithm());
     }
 
 }

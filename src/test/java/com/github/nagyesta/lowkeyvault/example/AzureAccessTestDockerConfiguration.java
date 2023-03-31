@@ -28,7 +28,7 @@ import static com.github.nagyesta.lowkeyvault.testcontainers.LowkeyVaultContaine
  */
 @Profile("docker")
 @Configuration
-public class AzureAccessTestDockerConfiguration implements DisposableBean {
+public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestConfiguration implements DisposableBean {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AzureAccessTestDockerConfiguration.class);
     private final LowkeyVaultContainer lowkeyVaultContainer;

@@ -18,6 +18,7 @@ and [Azure Key Vault Secret client](https://docs.microsoft.com/en-us/azure/key-v
 * [Application context root](src/main/java/com/github/nagyesta/lowkeyvault/example/LowkeyVaultExampleApplication.java)
 * [Key "repository"](src/main/java/com/github/nagyesta/lowkeyvault/example/impl/AzureKeyRepositoryImpl.java)
 * [Secret "repository"](src/main/java/com/github/nagyesta/lowkeyvault/example/impl/AzureSecretRepositoryImpl.java)
+* [Certificate "repository"](src/main/java/com/github/nagyesta/lowkeyvault/example/impl/AzureCertificateRepositoryImpl.java)
 * [Test configuration (Docker mode)](src/test/java/com/github/nagyesta/lowkeyvault/example/AzureAccessTestDockerConfiguration.java)
 * [Test configuration (Jar process mode)](src/test/java/com/github/nagyesta/lowkeyvault/example/AzureAccessTestProcessConfiguration.java)
 * [Test configuration (External Jar)](src/test/java/com/github/nagyesta/lowkeyvault/example/AzureAccessTestExternalStartConfiguration.java)
