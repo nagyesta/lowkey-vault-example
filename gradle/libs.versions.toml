@@ -1,6 +1,7 @@
 [versions]
 springBoot = "2.7.10"
 azureKeyVaultClient = "4.6.0"
+azureKeyVaultCertClient = "4.5.0"
 lowkeyVault = "1.26.2"
 checkstyle = "9.2.1"
 lombok = "1.18.26"
@@ -13,6 +14,7 @@ spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-star
 
 azure-security-keyvault-secrets = { module = "com.azure:azure-security-keyvault-secrets", version.ref = "azureKeyVaultClient" }
 azure-security-keyvault-keys = { module = "com.azure:azure-security-keyvault-keys", version.ref = "azureKeyVaultClient" }
+azure-security-keyvault-certificates = { module = "com.azure:azure-security-keyvault-certificates", version.ref = "azureKeyVaultCertClient" }
 
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok"}
 spring-boot-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "springBoot" }
@@ -23,7 +25,7 @@ lowkey-vault-testcontainers = { module = "com.github.nagyesta.lowkey-vault:lowke
 
 [bundles]
 azure = [
-    "azure-security-keyvault-secrets", "azure-security-keyvault-keys"
+    "azure-security-keyvault-secrets", "azure-security-keyvault-keys", "azure-security-keyvault-certificates"
 ]
 
 [plugins]
