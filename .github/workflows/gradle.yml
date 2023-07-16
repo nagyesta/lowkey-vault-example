@@ -29,10 +29,10 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
       - name: Build with Gradle using Jar process
-        uses: gradle/gradle-build-action@167b2acb460af805d2787fa3dcc2fba631061d17
+        uses: gradle/gradle-build-action@3c11eee5f9f46ca19a2706acfa4271757df95a6d
         with:
           arguments: test -Pprocess
       - name: Build with Gradle using Docker
-        uses: gradle/gradle-build-action@167b2acb460af805d2787fa3dcc2fba631061d17
+        uses: gradle/gradle-build-action@3c11eee5f9f46ca19a2706acfa4271757df95a6d
         with:
           arguments: test -Pdocker
