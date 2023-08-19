@@ -1,7 +1,7 @@
 ![LowkeyVault](https://raw.githubusercontent.com/nagyesta/lowkey-vault/main/.github/assets/LowkeyVault-logo-full.png)
 
 [![GitHub license](https://img.shields.io/github/license/nagyesta/lowkey-vault-example?color=informational)](https://raw.githubusercontent.com/nagyesta/lowkey-vault-example/main/LICENSE)
-[![Java version](https://img.shields.io/badge/Java%20version-11-yellow?logo=java)](https://img.shields.io/badge/Java%20version-11-yellow?logo=java)
+[![Java version](https://img.shields.io/badge/Java%20version-11%20with%20Docker|17%20with%20Jar-yellow?logo=java)](https://img.shields.io/badge/Java%20version-11%20with%20Docker|17%20with%20Jar-yellow?logo=java)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/nagyesta/lowkey-vault-example/gradle.yml?logo=github&branch=main)](https://github.com/nagyesta/lowkey-vault-example/actions/workflows/gradle.yml)
 [![Lowkey secure](https://img.shields.io/badge/lowkey-secure-0066CC)](https://github.com/nagyesta/lowkey-vault)
 
