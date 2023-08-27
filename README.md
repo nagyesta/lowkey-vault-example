@@ -36,6 +36,20 @@ Run the tests and let the context run Lowkey Vault using Docker:
 ./gradlew clean build -Pdocker
 ```
 
+In this mode, not only the `docker`, but the `managed-identity` profile is activated by the Gradle 
+[test task](build.gradle#L51). Also, the same configuration ensures, that the two required environment
+variables are configured as well:
+* ```IDENTITY_ENDPOINT``` must be set to point to the `/metadata/identity/oauth2/token` path of Assumed Identity e.g., http://localhost:8080/metadata/identity/oauth2/token
+* ```IDENTITY_HEADER``` can be set to anything (just needs to exist) e.g., `header`
+
+By setting these, the following things will happen:
+1. The [test configuration](src/test/java/com/github/nagyesta/lowkeyvault/example/AzureAccessTestDockerConfiguration.java)
+   will create a `DefaultAzureCredential` instance for the authentication due to the `managed-identity` Spring profile.
+2. The created credential will use the configured identity endpoint as token source
+3. The Assumed Identity container that is started by the test configuration will issue a dummy token whenever the managed
+   identity logic used by the `DefaultAzureCredential` requires one.
+4. Lowkey Vault will accept the dummy token
+
 #### Jar
 
 Run the tests and let the context run Lowkey Vault using Jar:
@@ -43,6 +57,8 @@ Run the tests and let the context run Lowkey Vault using Jar:
 ```shell
 ./gradlew clean build -Pprocess
 ```
+
+Note: managed identity will NOT be active with this profile, so no need to start Assumed Identity as well.
 
 #### External
 
@@ -52,8 +68,10 @@ Start Lowkey Vault manually:
 java -jar lowkey-vault-app-<version>.jar
 ```
 
-Run the tests using the extenally started Lowkey Vault:
+Run the tests using the externally started Lowkey Vault:
 
 ```shell
 ./gradlew clean build
 ```
+
+Note: managed identity will NOT be active with this profile, so no need to start Assumed Identity as well.
