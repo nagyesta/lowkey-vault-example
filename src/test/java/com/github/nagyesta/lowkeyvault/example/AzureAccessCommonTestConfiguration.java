@@ -23,7 +23,7 @@ public class AzureAccessCommonTestConfiguration {
         final CertificateClientBuilder builder = new CertificateClientBuilder()
                 .vaultUrl(vaultUrl)
                 .httpClient(httpClient)
-                .serviceVersion(CertificateServiceVersion.V7_3)
+                .serviceVersion(CertificateServiceVersion.V7_4)
                 .credential(tokenCredential);
         if (disableChallengeResourceVerification) {
             builder.disableChallengeResourceVerification();
