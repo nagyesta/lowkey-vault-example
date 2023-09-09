@@ -36,7 +36,7 @@ public class CryptographyClientProvider implements Function<JsonWebKey, Cryptogr
     @Override
     public CryptographyClient apply(final JsonWebKey jsonWebKey) {
         return new CryptographyClientBuilder()
-                .serviceVersion(CryptographyServiceVersion.V7_3)
+                .serviceVersion(CryptographyServiceVersion.V7_4)
                 .keyIdentifier(jsonWebKey.getId())
                 .httpClient(httpClient)
                 .credential(tokenCredential)

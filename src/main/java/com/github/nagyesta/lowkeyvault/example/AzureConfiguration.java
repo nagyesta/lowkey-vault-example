@@ -43,7 +43,7 @@ public class AzureConfiguration {
         final KeyClientBuilder builder = new KeyClientBuilder()
                 .vaultUrl(vaultUrl)
                 .httpClient(httpClient)
-                .serviceVersion(KeyServiceVersion.V7_3)
+                .serviceVersion(KeyServiceVersion.V7_4)
                 .credential(tokenCredential);
         if (disableChallengeResourceVerification) {
             builder.disableChallengeResourceVerification();
@@ -56,7 +56,7 @@ public class AzureConfiguration {
         final SecretClientBuilder builder = new SecretClientBuilder()
                 .vaultUrl(vaultUrl)
                 .httpClient(httpClient)
-                .serviceVersion(SecretServiceVersion.V7_3)
+                .serviceVersion(SecretServiceVersion.V7_4)
                 .credential(tokenCredential);
         if (disableChallengeResourceVerification) {
             builder.disableChallengeResourceVerification();
