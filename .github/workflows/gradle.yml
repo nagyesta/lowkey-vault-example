@@ -20,16 +20,23 @@ jobs:
   build:
     strategy:
       matrix:
-        module: [ java, docker ]
+        module: [ java, docker, spring ]
         include:
           - module: java
             name: Jar process
             profile: process
             jdk: 17
+            folder: java-sdk
           - module: docker
             name: Docker container
             profile: docker
             jdk: 11
+            folder: java-sdk
+          - module: spring
+            name: Spring Boot Azure Starter
+            profile: default
+            jdk: 17
+            folder: spring-cloud-azure-starter
     runs-on: ubuntu-latest
 
     steps:
@@ -42,4 +49,5 @@ jobs:
       - name: Build with Gradle using ${{ matrix.name }}
         uses: gradle/gradle-build-action@ef76a971e2fa3f867b617efd72f2fbd72cf6f8bc # v2.8.0
         with:
+          build-root-directory: ${{ matrix.folder }}
           arguments: test -P${{ matrix.profile }}
