@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  lowkey-vault:
+    container_name: example-lowkey-vault
+    image: nagyesta/lowkey-vault:2.1.0
+    ports:
+      - "10543:10543"
+    volumes:
+      - ./lowkey-vault/import/.gitkeep:/import/.gitkeep
+      - ./lowkey-vault/data/keyvault.json.hbs:/data/keyvault.json.hbs
+    environment:
+      LOWKEY_ARGS: "--server.port=10543 --LOWKEY_VAULT_NAMES=- --LOWKEY_IMPORT_LOCATION=/data/keyvault.json.hbs"
+  assumed-identity:
+    container_name: example-assumed-identity
+    image: nagyesta/assumed-identity:1.1.0
+    ports:
+      - "10544:10544"
+    environment:
+      ASSUMED_ID_PORT: "10544"

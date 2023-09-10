@@ -1,0 +1,37 @@
+{
+  "vaults": [
+    {
+      "attributes": {
+        "baseUri": "https://{{host}}:{{port}}",
+        "recoveryLevel": "Recoverable+Purgeable",
+        "recoverableDays": 90,
+        "created": 1647809444,
+        "deleted": null
+      },
+      "keys": {
+      },
+      "secrets": {
+        "secret-name": {
+          "versions": [
+            {
+              "vaultBaseUri": "https://{{host}}:{{port}}",
+              "entityId": "secret-name",
+              "entityVersion": "00000000000000000000000000000001",
+              "attributes": {
+                "enabled": true,
+                "created": {{now 0}},
+                "updated": {{now 0}},
+                "recoveryLevel": "Recoverable+Purgeable",
+                "recoverableDays": 90
+              },
+              "tags": {},
+              "managed": false,
+              "value": "It worked!",
+              "contentType": "text/plain"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
