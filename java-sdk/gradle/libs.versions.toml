@@ -5,7 +5,7 @@ azureKeyVaultCertClient = "4.5.5"
 azureIdentity = "1.10.1"
 lowkeyVault = "2.1.0"
 checkstyle = "9.2.1"
-lombok = "1.18.28"
+lombok = "1.18.30"
 
 springBootPlugin = "2.7.15"
 
