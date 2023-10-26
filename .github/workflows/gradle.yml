@@ -48,7 +48,6 @@ jobs:
           distribution: 'temurin'
       - name: Build with Gradle using ${{ matrix.name }}
         uses: gradle/gradle-build-action@842c587ad8aa4c68eeba24c396e15af4c2e9f30a # v2.9.0
-        if: ${{ matrix.module != 'spring' }} # Skip running the failing build unnecessarily
         with:
           build-root-directory: ${{ matrix.folder }}
           arguments: test -P${{ matrix.profile }}
