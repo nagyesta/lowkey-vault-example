@@ -13,7 +13,7 @@ services:
       LOWKEY_ARGS: "--server.port=10543 --LOWKEY_VAULT_NAMES=- --LOWKEY_IMPORT_LOCATION=/data/keyvault.json.hbs"
   assumed-identity:
     container_name: example-assumed-identity
-    image: nagyesta/assumed-identity:1.1.16
+    image: nagyesta/assumed-identity:1.1.21
     ports:
       - "10544:10544"
     environment:
