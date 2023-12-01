@@ -3,7 +3,7 @@ springBoot = "2.7.18"
 azureKeyVaultClient = "4.7.2"
 azureKeyVaultCertClient = "4.5.8"
 azureIdentity = "1.11.0"
-lowkeyVault = "2.1.47"
+lowkeyVault = "2.1.76"
 checkstyle = "9.2.1"
 lombok = "1.18.30"
 
