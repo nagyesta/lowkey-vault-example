@@ -46,6 +46,9 @@ variables are configured as well:
 * ```IDENTITY_ENDPOINT``` must be set to point to the `/metadata/identity/oauth2/token` path of Assumed Identity e.g., http://localhost:8080/metadata/identity/oauth2/token
 * ```IDENTITY_HEADER``` can be set to anything (just needs to exist) e.g., `header`
 
+> [!TIP]
+> Since v2.4.2, Lowkey Vault is providing the same token endpoint on the `8080` port by default. Therefore, you don't need to start another container.
+
 By setting these, the following things will happen:
 1. The [test configuration](java-sdk/src/test/java/com/github/nagyesta/lowkeyvault/example/AzureAccessTestDockerConfiguration.java)
    will create a `DefaultAzureCredential` instance for the authentication due to the `managed-identity` Spring profile.
@@ -62,7 +65,8 @@ Run the tests and let the context run Lowkey Vault using Jar:
 ./gradlew clean build -Pprocess
 ```
 
-Note: managed identity will NOT be active with this profile, so no need to start Assumed Identity as well.
+> [!NOTE]
+> Managed identity will NOT be active with this profile, so no need to start Assumed Identity as well.
 
 #### External
 
@@ -78,7 +82,8 @@ Run the tests using the externally started Lowkey Vault:
 ./gradlew clean build
 ```
 
-Note: managed identity will NOT be active with this profile, so no need to start Assumed Identity as well.
+> [!NOTE]
+> Managed identity will NOT be active with this profile, so no need to start Assumed Identity as well.
 
 ## [Spring Cloud Azure Starter](./spring-cloud-azure-starter)
 
@@ -107,6 +112,9 @@ The Lowkey Vault container will restore a previously saved state including the s
 The Gradle configuration ensures, that the two required environment variables are configured as well:
 * ```IDENTITY_ENDPOINT``` must be set to point to the `/metadata/identity/oauth2/token` path of Assumed Identity e.g., http://localhost:10544/metadata/identity/oauth2/token
 * ```IDENTITY_HEADER``` can be set to anything (just needs to exist) e.g., `header`
+
+> [!TIP]
+> Since v2.4.2, Lowkey Vault is providing the same token endpoint on the `8080` port by default. Therefore, you don't need to start another container.
 
 ### Usage
 

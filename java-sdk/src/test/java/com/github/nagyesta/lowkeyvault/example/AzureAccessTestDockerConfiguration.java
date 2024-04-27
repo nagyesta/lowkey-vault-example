@@ -15,8 +15,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
-import org.testcontainers.containers.FixedHostPortGenericContainer;
-import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.images.PullPolicy;
 import org.testcontainers.utility.DockerImageName;
 
@@ -34,27 +32,18 @@ import static com.github.nagyesta.lowkeyvault.testcontainers.LowkeyVaultContaine
 public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestConfiguration implements DisposableBean {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AzureAccessTestDockerConfiguration.class);
-    private static final int ASSUMED_ID_HOST_PORT = 8080;
-    private static final int ASSUMED_ID_CONTAINER_PORT = 80;
+    private static final int HOST_TOKEN_PORT = 8080;
     private final LowkeyVaultContainer lowkeyVaultContainer;
-    private final GenericContainer<?> assumedIdentityContainer;
 
-    @SuppressWarnings({"resource", "deprecation"})
     public AzureAccessTestDockerConfiguration() {
         final String version = System.getProperty("lowkey-version");
         final DockerImageName imageName = DockerImageName.parse("nagyesta/lowkey-vault:" + version);
         lowkeyVaultContainer = lowkeyVault(imageName)
+                .hostTokenPort(HOST_TOKEN_PORT)
                 .build()
                 .withImagePullPolicy(PullPolicy.defaultPolicy());
-        // Make sure to use a fixed port for Assumed Identity
-        final DockerImageName assumedImageName = DockerImageName.parse("nagyesta/assumed-identity:1.1.0");
-        assumedIdentityContainer = new FixedHostPortGenericContainer<>(assumedImageName.asCanonicalNameString())
-                // Expose the port and allow access on localhost:8080
-                .withFixedExposedPort(ASSUMED_ID_HOST_PORT, ASSUMED_ID_CONTAINER_PORT);
         lowkeyVaultContainer.start();
         LOGGER.warn("Started container: {} {}", imageName, lowkeyVaultContainer.getContainerName());
-        assumedIdentityContainer.start();
-        LOGGER.warn("Started container: {} {}", imageName, assumedIdentityContainer.getContainerName());
     }
 
     /**
@@ -81,6 +70,7 @@ public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestCon
     public TokenCredential managedIdentityTokenCredential() {
         LOGGER.info("IDENTITY_ENDPOINT: " + System.getenv("IDENTITY_ENDPOINT"));
         LOGGER.info("IDENTITY_HEADER: " + System.getenv("IDENTITY_HEADER"));
+        LOGGER.info("Bypassing authentication with dummy token from: " + lowkeyVaultContainer.getTokenEndpointUrl());
         return new DefaultAzureCredentialBuilder().build();
     }
 
@@ -128,7 +118,5 @@ public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestCon
     public void destroy() {
         LOGGER.warn("Stopping Docker container: {}", lowkeyVaultContainer.getContainerName());
         lowkeyVaultContainer.stop();
-        LOGGER.warn("Stopping Docker container: {}", assumedIdentityContainer.getContainerName());
-        assumedIdentityContainer.stop();
     }
 }
