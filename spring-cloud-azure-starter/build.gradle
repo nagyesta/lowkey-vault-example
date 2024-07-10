@@ -17,7 +17,7 @@ repositories {
 }
 
 ext {
-	set('springCloudAzureVersion', "5.13.0")
+	set('springCloudAzureVersion', "5.14.0")
 }
 
 dependencies {
