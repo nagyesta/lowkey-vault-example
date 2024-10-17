@@ -1,7 +1,7 @@
 [versions]
 springBoot = "2.7.18"
 azureKeyVaultKeyClient = "4.8.8"
-azureKeyVaultSecretsClient = "4.8.7"
+azureKeyVaultSecretsClient = "4.9.0"
 azureKeyVaultCertClient = "4.6.7"
 azureIdentity = "1.14.0"
 lowkeyVault = "2.5.31"
