@@ -4,7 +4,7 @@ azureKeyVaultKeyClient = "4.9.0"
 azureKeyVaultSecretsClient = "4.9.0"
 azureKeyVaultCertClient = "4.7.0"
 azureIdentity = "1.14.2"
-lowkeyVault = "2.5.58"
+lowkeyVault = "2.5.81"
 checkstyle = "9.2.1"
 lombok = "1.18.36"
 
