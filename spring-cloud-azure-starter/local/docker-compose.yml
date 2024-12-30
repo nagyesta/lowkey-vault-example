@@ -3,7 +3,7 @@ version: "3"
 services:
   lowkey-vault:
     container_name: example-lowkey-vault
-    image: nagyesta/lowkey-vault:2.6.3
+    image: nagyesta/lowkey-vault:2.6.4
     ports:
       - "10543:10543"
       - "10544:10544"
