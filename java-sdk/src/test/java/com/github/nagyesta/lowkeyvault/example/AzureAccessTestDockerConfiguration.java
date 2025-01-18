@@ -33,6 +33,7 @@ public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestCon
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AzureAccessTestDockerConfiguration.class);
     private static final int HOST_TOKEN_PORT = 8080;
+    private static final int HOST_PORT = 8443;
     private final LowkeyVaultContainer lowkeyVaultContainer;
 
     public AzureAccessTestDockerConfiguration() {
@@ -40,6 +41,7 @@ public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestCon
         final DockerImageName imageName = DockerImageName.parse("nagyesta/lowkey-vault:" + version);
         lowkeyVaultContainer = lowkeyVault(imageName)
                 .hostTokenPort(HOST_TOKEN_PORT)
+                .hostPort(HOST_PORT)
                 .build()
                 .withImagePullPolicy(PullPolicy.defaultPolicy());
         lowkeyVaultContainer.start();
