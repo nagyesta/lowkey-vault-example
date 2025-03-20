@@ -1,14 +1,9 @@
 HELP.md
 .gradle
 build/
-java-sdk/build/
-java-sdk/.idea/
-java-sdk/out/
-java-sdk/*.iml
-spring-cloud-azure-starter/build/
-spring-cloud-azure-starter/.idea/
-spring-cloud-azure-starter/out/
-spring-cloud-azure-starter/*.iml
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 ### STS ###
 .apt_generated
@@ -40,6 +35,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-
-/micronaut-testcontainers/.micronaut/test-resources/test-resources-port.txt
