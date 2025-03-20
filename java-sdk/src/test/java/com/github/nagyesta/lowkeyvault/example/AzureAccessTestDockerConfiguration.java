@@ -10,7 +10,6 @@ import com.github.nagyesta.lowkeyvault.testcontainers.LowkeyVaultContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -27,7 +26,6 @@ import static com.github.nagyesta.lowkeyvault.testcontainers.LowkeyVaultContaine
  * <li>How the Lowkey Vault Client can be used.</li>
  * </ol>
  */
-@Profile("docker")
 @Configuration
 public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestConfiguration implements DisposableBean {
 
@@ -41,7 +39,7 @@ public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestCon
         final DockerImageName imageName = DockerImageName.parse("nagyesta/lowkey-vault:" + version);
         lowkeyVaultContainer = lowkeyVault(imageName)
                 .hostTokenPort(HOST_TOKEN_PORT)
-                .hostPort(HOST_PORT)
+                .logicalPort(HOST_PORT)
                 .build()
                 .withImagePullPolicy(PullPolicy.defaultPolicy());
         lowkeyVaultContainer.start();
@@ -70,9 +68,9 @@ public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestCon
     @Bean
     @Primary
     public TokenCredential managedIdentityTokenCredential() {
-        LOGGER.info("IDENTITY_ENDPOINT: " + System.getenv("IDENTITY_ENDPOINT"));
-        LOGGER.info("IDENTITY_HEADER: " + System.getenv("IDENTITY_HEADER"));
-        LOGGER.info("Bypassing authentication with dummy token from: " + lowkeyVaultContainer.getTokenEndpointUrl());
+        LOGGER.info("IDENTITY_ENDPOINT: {}", System.getenv("IDENTITY_ENDPOINT"));
+        LOGGER.info("IDENTITY_HEADER: {}", System.getenv("IDENTITY_HEADER"));
+        LOGGER.info("Bypassing authentication with dummy token from: {}", lowkeyVaultContainer.getTokenEndpointUrl());
         return new DefaultAzureCredentialBuilder().build();
     }
 
@@ -98,7 +96,7 @@ public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestCon
      * @see <a href="https://github.com/nagyesta/lowkey-vault/blob/main/lowkey-vault-client/README.md">Lowkey Vault Client features</a>
      */
     @Bean
-    public ApacheHttpClientProvider apacheHttpClientProvider(@Autowired final AuthorityOverrideFunction overrideFunction) {
+    public ApacheHttpClientProvider apacheHttpClientProvider(final AuthorityOverrideFunction overrideFunction) {
         return new ApacheHttpClientProvider(lowkeyVaultContainer.getDefaultVaultBaseUrl(), overrideFunction);
     }
 
@@ -112,7 +110,7 @@ public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestCon
      */
     @Bean
     @Primary
-    public HttpClient httpClient(@Autowired final ApacheHttpClientProvider apacheHttpClientProvider) {
+    public HttpClient httpClient(final ApacheHttpClientProvider apacheHttpClientProvider) {
         return apacheHttpClientProvider.createInstance();
     }
 
