@@ -5,17 +5,17 @@
         "baseUri": "https://{{host}}:{{port}}",
         "recoveryLevel": "Recoverable+Purgeable",
         "recoverableDays": 90,
-        "created": 1647809444,
+        "created": {{now 0}},
         "deleted": null
       },
       "keys": {
       },
       "secrets": {
-        "secret-name": {
+        "spring-datasource-url": {
           "versions": [
             {
               "vaultBaseUri": "https://{{host}}:{{port}}",
-              "entityId": "secret-name",
+              "entityId": "spring-datasource-url",
               "entityVersion": "00000000000000000000000000000001",
               "attributes": {
                 "enabled": true,
@@ -26,7 +26,67 @@
               },
               "tags": {},
               "managed": false,
-              "value": "It worked!",
+              "value": "jdbc:mysql://localhost:23306/",
+              "contentType": "text/plain"
+            }
+          ]
+        },
+        "spring-datasource-username": {
+          "versions": [
+            {
+              "vaultBaseUri": "https://{{host}}:{{port}}",
+              "entityId": "spring-datasource-username",
+              "entityVersion": "00000000000000000000000000000001",
+              "attributes": {
+                "enabled": true,
+                "created": {{now 0}},
+                "updated": {{now 0}},
+                "recoveryLevel": "Recoverable+Purgeable",
+                "recoverableDays": 90
+              },
+              "tags": {},
+              "managed": false,
+              "value": "root",
+              "contentType": "text/plain"
+            }
+          ]
+        },
+        "spring-datasource-password": {
+          "versions": [
+            {
+              "vaultBaseUri": "https://{{host}}:{{port}}",
+              "entityId": "spring-datasource-password",
+              "entityVersion": "00000000000000000000000000000001",
+              "attributes": {
+                "enabled": true,
+                "created": {{now 0}},
+                "updated": {{now 0}},
+                "recoveryLevel": "Recoverable+Purgeable",
+                "recoverableDays": 90
+              },
+              "tags": {},
+              "managed": false,
+              "value": "NOT_A_SECRET_5b8538b6-2bf1-4d38-94f0-308d4fbb757b",
+              "contentType": "text/plain"
+            }
+          ]
+        },
+        "spring-datasource-driver-class-name": {
+          "versions": [
+            {
+              "vaultBaseUri": "https://{{host}}:{{port}}",
+              "entityId": "spring-datasource-driver-class-name",
+              "entityVersion": "00000000000000000000000000000001",
+              "attributes": {
+                "enabled": true,
+                "created": {{now 0}},
+                "updated": {{now 0}},
+                "recoveryLevel": "Recoverable+Purgeable",
+                "recoverableDays": 90
+              },
+              "tags": {},
+              "managed": false,
+              "value": "com.mysql.cj.jdbc.Driver",
               "contentType": "text/plain"
             }
           ]

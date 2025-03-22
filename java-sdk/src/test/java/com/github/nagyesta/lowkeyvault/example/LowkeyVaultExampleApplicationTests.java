@@ -14,17 +14,22 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.nio.charset.StandardCharsets;
 import java.security.cert.X509Certificate;
 import java.security.interfaces.ECPrivateKey;
 
+@ActiveProfiles("managed-identity")
 @SpringBootTest(classes = {
-        AzureAccessTestProcessConfiguration.class,
         AzureAccessTestDockerConfiguration.class,
-        AzureAccessTestExternalStartConfiguration.class,
         LowkeyVaultExampleApplication.class},
-        properties = {"vault.url=https://localhost:8443", "vault.disable-challenge-resource-verification=true", "logging.level.root=WARN"})
+        properties = {
+                "vault.url=https://localhost:8443",
+                "vault.disable-challenge-resource-verification=true",
+                "logging.level.root=WARN"
+        }
+)
 class LowkeyVaultExampleApplicationTests {
 
     private static final int RSA_KEY_SIZE = 2048;
@@ -104,7 +109,7 @@ class LowkeyVaultExampleApplicationTests {
         final ECPrivateKey actualPrivateKey = certificateRepository.getPrivateKey();
 
         //then
-        Assertions.assertEquals(subject, actualCertificate.getSubjectDN().getName());
+        Assertions.assertEquals(subject, actualCertificate.getSubjectX500Principal().getName());
         Assertions.assertEquals(CertificateKeyType.EC.toString(), actualPrivateKey.getAlgorithm());
     }
 

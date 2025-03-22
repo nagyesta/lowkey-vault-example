@@ -1,9 +1,10 @@
 package com.github.nagyesta.lowkeyvault.example.springcloudazurestarter;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.sql.SQLException;
 
 @SpringBootTest(properties = {
         "spring.cloud.azure.keyvault.secret.property-sources[0].challenge-resource-verification-enabled=false",
@@ -11,17 +12,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 })
 class SpringCloudAzureStarterApplicationTests {
 
-    @Value("${secret.name:Failed}")
-    private String actual;
+    @Autowired
+    private MySqlConnectionCheck mySqlConnectionCheck;
 
     @Test
-    void contextLoads() {
+    void contextLoads() throws SQLException {
         //given the context loads
 
         //when the actual field is set
+        mySqlConnectionCheck.verifyConnectivity();
 
-        //then
-        Assertions.assertEquals("It worked!", actual);
+        //then no exception
     }
 
 }

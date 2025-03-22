@@ -19,24 +19,26 @@ permissions:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
-        module: [ java, docker, spring ]
+        module: [ java-sdk, spring, spring-tc, micronaut-tc ]
         include:
-          - module: java
-            name: Jar process
-            profile: process
+          - module: java-sdk
+            name: Java SDK with Testcontainers
             jdk: 17
-            folder: java-sdk
-          - module: docker
-            name: Docker container
-            profile: docker
-            jdk: 11
             folder: java-sdk
           - module: spring
             name: Spring Boot Azure Starter
-            profile: default
             jdk: 17
             folder: spring-cloud-azure-starter
+          - module: spring-tc
+            name: Spring Boot Azure Starter Testcontainers
+            jdk: 17
+            folder: spring-cloud-azure-starter-testcontainers
+          - module: micronaut-tc
+            name: Micronaut Testcontainers
+            jdk: 17
+            folder: micronaut-testcontainers
     runs-on: ubuntu-latest
 
     steps:
@@ -51,4 +53,4 @@ jobs:
         uses: gradle/actions/setup-gradle@94baf225fe0a508e581a564467443d0e2379123b # v4.3.0
       - name: Build with Gradle using ${{ matrix.name }}
         working-directory: ${{ matrix.folder }}
-        run: ./gradlew test -P${{ matrix.profile }}
+        run: ./gradlew test
