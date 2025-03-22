@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("org.springframework.boot") version "3.4.3"
+    id("org.springframework.boot") version "3.4.4"
     id("io.spring.dependency-management") version "1.1.7"
     checkstyle
 }
@@ -43,7 +43,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("com.azure.spring:spring-cloud-azure-dependencies:5.20.1")
+        mavenBom("com.azure.spring:spring-cloud-azure-dependencies:5.21.0")
     }
     dependencies {
         dependency("org.testcontainers:mysql:1.20.6")
