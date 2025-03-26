@@ -22,10 +22,10 @@ dependencies {
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     testRuntimeOnly("org.slf4j:slf4j-simple")
     implementation("com.mysql:mysql-connector-j")
-    implementation("com.azure:azure-security-keyvault-secrets:4.9.3")
+    implementation("com.azure:azure-security-keyvault-secrets:4.9.4")
     testImplementation("org.testcontainers:junit-jupiter:1.20.6")
     testImplementation("org.testcontainers:mysql:1.20.6")
-    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:2.14.6")
+    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:2.14.13")
 }
 
 

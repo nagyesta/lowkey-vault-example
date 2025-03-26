@@ -48,12 +48,12 @@ dependencyManagement {
         dependency("org.springframework.boot:spring-boot-starter-web:3.4.4")
         dependency("org.springframework.boot:spring-boot-configuration-processor:3.4.4")
         dependency("org.springframework.boot:spring-boot-starter-test:3.4.4")
-        dependency("com.azure:azure-security-keyvault-secrets:4.9.3")
-        dependency("com.azure:azure-security-keyvault-keys:4.9.3")
-        dependency("com.azure:azure-security-keyvault-certificates:4.7.3")
+        dependency("com.azure:azure-security-keyvault-secrets:4.9.4")
+        dependency("com.azure:azure-security-keyvault-keys:4.9.4")
+        dependency("com.azure:azure-security-keyvault-certificates:4.7.4")
         dependency("com.azure:azure-identity:1.15.4")
-        dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-client:2.14.6")
-        dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:2.14.6")
+        dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-client:2.14.13")
+        dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:2.14.13")
     }
 }
 
