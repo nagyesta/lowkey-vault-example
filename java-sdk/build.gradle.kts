@@ -51,9 +51,9 @@ dependencyManagement {
         dependency("com.azure:azure-security-keyvault-secrets:4.9.4")
         dependency("com.azure:azure-security-keyvault-keys:4.9.4")
         dependency("com.azure:azure-security-keyvault-certificates:4.7.4")
-        dependency("com.azure:azure-identity:1.15.4")
-        dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-client:3.0.21")
-        dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:3.0.21")
+        dependency("com.azure:azure-identity:1.16.0")
+        dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-client:3.1.0")
+        dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:3.1.0")
     }
 }
 
