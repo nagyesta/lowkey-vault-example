@@ -25,7 +25,7 @@ dependencies {
     implementation("com.azure:azure-security-keyvault-secrets:4.9.4")
     testImplementation("org.testcontainers:junit-jupiter:1.21.0")
     testImplementation("org.testcontainers:mysql:1.21.0")
-    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:3.1.0")
+    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:3.1.16")
 }
 
 
