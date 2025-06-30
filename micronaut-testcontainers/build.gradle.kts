@@ -1,5 +1,5 @@
 plugins {
-    id("com.gradleup.shadow") version "8.3.6"
+    id("com.gradleup.shadow") version "8.3.7"
     id("io.micronaut.application") version "4.5.4"
     id("io.micronaut.test-resources") version "4.5.4"
     id("io.micronaut.aot") version "4.5.4"
@@ -23,8 +23,8 @@ dependencies {
     testRuntimeOnly("org.slf4j:slf4j-simple")
     implementation("com.mysql:mysql-connector-j")
     implementation("com.azure:azure-security-keyvault-secrets:4.10.0")
-    testImplementation("org.testcontainers:junit-jupiter:1.21.2")
-    testImplementation("org.testcontainers:mysql:1.21.2")
+    testImplementation("org.testcontainers:junit-jupiter:1.21.3")
+    testImplementation("org.testcontainers:mysql:1.21.3")
     testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:3.2.0")
 }
 
