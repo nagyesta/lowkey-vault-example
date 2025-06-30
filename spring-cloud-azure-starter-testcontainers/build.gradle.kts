@@ -46,8 +46,8 @@ dependencyManagement {
         mavenBom("com.azure.spring:spring-cloud-azure-dependencies:5.22.0")
     }
     dependencies {
-        dependency("org.testcontainers:mysql:1.21.2")
-        dependency("org.testcontainers:junit-jupiter:1.21.2")
+        dependency("org.testcontainers:mysql:1.21.3")
+        dependency("org.testcontainers:junit-jupiter:1.21.3")
         dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:3.2.0")
     }
 }
