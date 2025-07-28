@@ -13,7 +13,7 @@ services:
 
   mysql:
     container_name: spring-akv-example-mysql
-    image: mysql:9.3.0
+    image: mysql:9.4.0
     environment:
       MYSQL_ROOT_PASSWORD: NOT_A_SECRET_5b8538b6-2bf1-4d38-94f0-308d4fbb757b
     ports:
