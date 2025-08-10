@@ -23,7 +23,7 @@ class MicronautAkvDemoTest {
     static LowkeyVaultContainer lowkeyVaultContainer = lowkeyVaultContainer();
 
     static LowkeyVaultContainer lowkeyVaultContainer() {
-        return LowkeyVaultContainerBuilder.lowkeyVault("nagyesta/lowkey-vault:3.2.0")
+        return LowkeyVaultContainerBuilder.lowkeyVault("nagyesta/lowkey-vault:3.4.23")
                 .hostTokenPort(10544)
                 .dependsOnContainer(mySqlContainer(), jdbcSecretSupplier("datasource"))
                 .mergeTrustStores()
