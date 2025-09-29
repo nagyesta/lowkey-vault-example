@@ -7,8 +7,8 @@
 # Lowkey Vault - Example - Spring Cloud Azure Starter
 
 This example is using the official Azure Starter for setting up a Key Vault backed property source. The application
-was generated with [Spring Initializr](https://start.spring.io). The Lowkey Vault and the MySQL images are started 
-using  Testcontainers.
+was generated with [Spring Initializr](https://start.spring.io). The Lowkey Vault and the MySQL images are started
+using Docker Compose.
 
 > [!WARNING]
 > The example depends on the `5.6.0+` version of the Spring Cloud Azure Starter implementation.
@@ -25,9 +25,9 @@ using  Testcontainers.
 
 Note: In order to better understand what is needed in general to make similar examples work, please find a generic overview [here](https://github.com/nagyesta/lowkey-vault/wiki/Example:-How-can-you-use-Lowkey-Vault-in-your-tests).
 
-In this mode, the containers are automatically started using the [docker-compose.yml](local/docker-compose.yml).
+In this example, the containers are automatically started using the [docker-compose.yml](local/docker-compose.yml).
 The Lowkey Vault container will restore a previously saved state with the DB credentials.
-The Gradle configuration ensures, that the two required environment variables are configured as well:
+The Gradle configuration ensures that the two required environment variables are configured as well:
 * ```IDENTITY_ENDPOINT``` must be set to point to the `/metadata/identity/oauth2/token` path of Assumed Identity e.g., http://localhost:10544/metadata/identity/oauth2/token
 * ```IDENTITY_HEADER``` can be set to anything (just needs to exist) e.g., `header`
 
