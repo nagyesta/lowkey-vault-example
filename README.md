@@ -12,3 +12,4 @@ This repository contains the following examples for [Lowkey Vault](https://githu
 - [Spring Cloud Azure Starter](./spring-cloud-azure-starter)
 - [Spring Cloud Azure Starter using Testcontainers](./spring-cloud-azure-starter-testcontainers)
 - [Micronaut using Testcontainers](./micronaut-testcontainers)
+- [Quarkus using Testcontainers](./quarkus-testcontainers)

@@ -21,9 +21,9 @@ using Testcontainers.
 
 Note: In order to better understand what is needed in general to make similar examples work, please find a generic overview [here](https://github.com/nagyesta/lowkey-vault/wiki/Example:-How-can-you-use-Lowkey-Vault-in-your-tests).
 
-In this mode, the containers are automatically started using Testcontainers both for the tests and the local app start.
+In this example, the containers are automatically started using Testcontainers both for the tests and the local app start.
 The Lowkey Vault container will be automatically populated with the DB credentials by defining the JDBC dependency.
-The Gradle configuration ensures, that the two required environment variables are configured as well:
+The Gradle configuration ensures that the two required environment variables are configured as well:
 * ```IDENTITY_ENDPOINT``` must be set to point to the `/metadata/identity/oauth2/token` path of Assumed Identity e.g., http://localhost:10544/metadata/identity/oauth2/token
 * ```IDENTITY_HEADER``` can be set to anything (just needs to exist) e.g., `header`
 

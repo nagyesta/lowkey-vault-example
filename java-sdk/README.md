@@ -30,7 +30,7 @@ Run the tests and let the context run Lowkey Vault using Docker:
 ./gradlew clean build
 ```
 
-In this mode, the `managed-identity` profile is activated by default by the Test configuration. Gradle is used
+In this example, the `managed-identity` profile is activated by default by the Test configuration. Gradle is used
 for setting the two required environment variables in [test task](build.gradle.kts#L60):
 * ```IDENTITY_ENDPOINT``` must be set to point to the `/metadata/identity/oauth2/token` path of Assumed Identity e.g., http://localhost:8080/metadata/identity/oauth2/token
 * ```IDENTITY_HEADER``` can be set to anything (just needs to exist) e.g., `header`

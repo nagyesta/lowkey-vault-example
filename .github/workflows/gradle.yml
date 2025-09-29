@@ -39,6 +39,10 @@ jobs:
             name: Micronaut Testcontainers
             jdk: 17
             folder: micronaut-testcontainers
+          - module: quarkus-tc
+            name: Quarkus Testcontainers
+            jdk: 17
+            folder: quarkus-testcontainers
     runs-on: ubuntu-latest
 
     steps:
