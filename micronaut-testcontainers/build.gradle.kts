@@ -1,7 +1,7 @@
 plugins {
-    id("io.micronaut.application") version "4.5.4"
-    id("io.micronaut.test-resources") version "4.5.4"
-    id("io.micronaut.aot") version "4.5.4"
+    id("io.micronaut.application") version "4.5.5"
+    id("io.micronaut.test-resources") version "4.5.5"
+    id("io.micronaut.aot") version "4.5.5"
 }
 
 version = "0.1"
@@ -19,12 +19,13 @@ dependencies {
     implementation("io.micronaut.discovery:micronaut-discovery-client")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
-    testRuntimeOnly("org.slf4j:slf4j-simple")
     implementation("com.mysql:mysql-connector-j")
     implementation("com.azure:azure-security-keyvault-secrets:4.10.3")
     testImplementation("org.testcontainers:junit-jupiter:1.21.3")
     testImplementation("org.testcontainers:mysql:1.21.3")
-    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:4.0.49")
+    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:4.0.58")
+    testRuntimeOnly("org.slf4j:slf4j-simple")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 
