@@ -23,7 +23,7 @@ dependencies {
     implementation("com.azure:azure-security-keyvault-secrets:4.10.3")
     testImplementation("org.testcontainers:junit-jupiter:1.21.3")
     testImplementation("org.testcontainers:mysql:1.21.3")
-    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:4.0.58")
+    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:4.0.67")
     testRuntimeOnly("org.slf4j:slf4j-simple")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
