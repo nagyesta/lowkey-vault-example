@@ -1,7 +1,7 @@
 plugins {
-    id("io.micronaut.application") version "4.6.0"
-    id("io.micronaut.test-resources") version "4.6.0"
-    id("io.micronaut.aot") version "4.6.0"
+    id("io.micronaut.application") version "4.6.1"
+    id("io.micronaut.test-resources") version "4.6.1"
+    id("io.micronaut.aot") version "4.6.1"
 }
 
 version = "0.1"
