@@ -20,10 +20,10 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("com.mysql:mysql-connector-j")
-    implementation("com.azure:azure-security-keyvault-secrets:4.10.3")
+    implementation("com.azure:azure-security-keyvault-secrets:4.10.4")
     testImplementation("org.testcontainers:junit-jupiter:1.21.3")
     testImplementation("org.testcontainers:mysql:1.21.3")
-    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:4.0.67")
+    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:4.1.0")
     testRuntimeOnly("org.slf4j:slf4j-simple")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
