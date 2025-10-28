@@ -35,8 +35,7 @@ public class AzureAccessTestDockerConfiguration extends AzureAccessCommonTestCon
     private final LowkeyVaultContainer lowkeyVaultContainer;
 
     public AzureAccessTestDockerConfiguration() {
-        final String version = System.getProperty("lowkey-version");
-        final DockerImageName imageName = DockerImageName.parse("nagyesta/lowkey-vault:" + version);
+        final DockerImageName imageName = DockerImageName.parse("nagyesta/lowkey-vault:4.1.0");
         lowkeyVaultContainer = lowkeyVault(imageName)
                 .hostTokenPort(HOST_TOKEN_PORT)
                 .logicalPort(HOST_PORT)
