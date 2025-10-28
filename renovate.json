@@ -25,5 +25,25 @@
       "datasourceTemplate": "docker",
       "versioningTemplate": "docker"
     }
+  ],
+  "packageRules": [
+    {
+      "matchCategories": [
+        "docker"
+      ],
+      "pinDigests": true
+    },
+    {
+      "groupName": "Github Actions",
+      "matchManagers": [
+        "github-actions"
+      ]
+    },
+    {
+      "groupName": "Lowkey Vault dependencies",
+      "matchPackageNames": [
+        "com.github.nagyesta.lowkey{/,}**"
+      ]
+    }
   ]
 }
