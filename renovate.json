@@ -12,5 +12,15 @@
   "commitMessageSuffix": "{patch}",
   "github-actions": {
     "pinDigests": true
-  }
+  },
+  "regexManagers": [
+    {
+      "fileMatch": ["\\.java$"],
+      "matchStrings": [
+        "DockerImageName\\.parse\\(\\s*[\"'](?<depName>[^:]+):(?<currentValue>[^\"']+)[\"']\\s*\\)"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
+    }
+  ]
 }

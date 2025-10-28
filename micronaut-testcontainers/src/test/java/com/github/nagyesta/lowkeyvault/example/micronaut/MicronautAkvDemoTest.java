@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 
 import java.sql.SQLException;
 import java.util.Map;
@@ -23,7 +24,8 @@ class MicronautAkvDemoTest {
     static LowkeyVaultContainer lowkeyVaultContainer = lowkeyVaultContainer();
 
     static LowkeyVaultContainer lowkeyVaultContainer() {
-        return LowkeyVaultContainerBuilder.lowkeyVault("nagyesta/lowkey-vault:4.0.58")
+        final var imageName = DockerImageName.parse("nagyesta/lowkey-vault:4.0.58");
+        return LowkeyVaultContainerBuilder.lowkeyVault(imageName)
                 .hostTokenPort(10544)
                 .dependsOnContainer(mySqlContainer(), jdbcSecretSupplier("datasource"))
                 .mergeTrustStores()
@@ -34,7 +36,8 @@ class MicronautAkvDemoTest {
     }
 
     private static MySQLContainer<?> mySqlContainer() {
-        return new MySQLContainer<>("mysql:9.2.0");
+        final var imageName = DockerImageName.parse("mysql:9.2.0");
+        return new MySQLContainer<>(imageName);
     }
 
     @Inject

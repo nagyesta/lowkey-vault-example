@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 
 import java.sql.SQLException;
 
@@ -21,7 +22,7 @@ class SpringCloudAzureStarterApplicationTests {
     static LowkeyVaultContainer lowkeyVaultContainer = getLowkeyVaultContainer();
 
     static LowkeyVaultContainer getLowkeyVaultContainer() {
-        return lowkeyVault("nagyesta/lowkey-vault:4.0.58")
+        return lowkeyVault(DockerImageName.parse("nagyesta/lowkey-vault:4.0.58"))
                 .hostTokenPort(10544)
                 .dependsOnContainer(getMySqlContainer(), springJdbcSecretSupplier())
                 .mergeTrustStores()
@@ -30,7 +31,8 @@ class SpringCloudAzureStarterApplicationTests {
     }
 
     private static MySQLContainer<?> getMySqlContainer() {
-        return new MySQLContainer<>("mysql:9.2.0");
+        final var imageName = DockerImageName.parse("mysql:9.2.0");
+        return new MySQLContainer<>(imageName);
     }
 
     @Autowired

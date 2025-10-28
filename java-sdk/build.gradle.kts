@@ -59,7 +59,6 @@ dependencyManagement {
 
 tasks.test {
     useJUnitPlatform()
-    systemProperty("lowkey-version", "2.14.6")
     // Only needed if Assumed Identity and DefaultAzureCredential is used to simulate IMDS managed identity
     environment("IDENTITY_ENDPOINT", "http://localhost:8080/metadata/identity/oauth2/token")
     environment("IDENTITY_HEADER", "header")
