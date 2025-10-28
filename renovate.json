@@ -15,12 +15,13 @@
   },
   "customManagers": [
     {
+      "name": "testcontainers-docker",
       "customType": "regex",
       "managerFilePatterns": [
         "/\\.java$/"
       ],
       "matchStrings": [
-        "DockerImageName\\.parse\\(\\s*[\"'](?<depName>[^:]+):(?<currentValue>[^\"']+)[\"']\\s*\\)"
+        "DockerImageName\\.parse\\(\\s*\"(?<depName>[^:]+):(?<currentValue>[^\"']+)\"\\s*\\)"
       ],
       "datasourceTemplate": "docker",
       "versioningTemplate": "docker"
