@@ -18,7 +18,7 @@ dependencies {
     implementation("io.quarkus:quarkus-jdbc-mysql")
     implementation("io.quarkus:quarkus-arc")
     testImplementation("io.quarkus:quarkus-junit5")
-    testImplementation("org.testcontainers:mysql:1.21.3")
+    testImplementation("org.testcontainers:testcontainers-mysql:2.0.1")
     testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:5.0.0")
 }
 

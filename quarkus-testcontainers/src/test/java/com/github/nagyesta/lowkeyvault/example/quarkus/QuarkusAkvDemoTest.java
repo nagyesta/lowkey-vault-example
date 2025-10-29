@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 @QuarkusTest
 @QuarkusTestResource(value = LowkeyVaultTestResource.class, restrictToAnnotatedClass = true)
-public class QuarkusAkvDemoTest {
+class QuarkusAkvDemoTest {
 
     @Inject
     MySqlConnectionCheck mySqlConnectionCheck;
