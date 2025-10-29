@@ -13,6 +13,12 @@
   "github-actions": {
     "pinDigests": true
   },
+  "ignorePaths": [
+    "**/build/**",
+    "**/.gradle/**",
+    ".gradle/**",
+    ".idea/**"
+  ],
   "customManagers": [
     {
       "customType": "regex",
