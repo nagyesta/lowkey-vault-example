@@ -13,11 +13,12 @@
   "github-actions": {
     "pinDigests": true
   },
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "description": "Testcontainers docker images",
-      "fileMatch": [
-        "^.+\\.java$"
+      "managerFilePatterns": [
+        "/^.+\\.java$/"
       ],
       "matchStrings": [
         "DockerImageName\\.parse\\(\\s*\"(?<depName>[^:]+):(?<currentValue>[^\"']+)\"\\s*\\)"
