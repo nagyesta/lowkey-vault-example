@@ -2,7 +2,7 @@ package com.github.nagyesta.lowkeyvault.example.quarkus;
 
 import com.github.nagyesta.lowkeyvault.testcontainers.LowkeyVaultContainer;
 import io.quarkus.test.common.QuarkusTestResourceLifecycleManager;
-import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.mysql.MySQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
 import java.util.Map;
@@ -11,12 +11,12 @@ import static com.github.nagyesta.lowkeyvault.testcontainers.LowkeyVaultContaine
 
 public class LowkeyVaultTestResource implements QuarkusTestResourceLifecycleManager {
 
-    MySQLContainer<?> mySQLContainer;
+    MySQLContainer mySQLContainer;
     LowkeyVaultContainer lowkeyVaultContainer;
 
     @Override
     public Map<String, String> start() {
-        mySQLContainer = new MySQLContainer<>(DockerImageName.parse("mysql:9.5.0"));
+        mySQLContainer = new MySQLContainer(DockerImageName.parse("mysql:9.5.0"));
         lowkeyVaultContainer = lowkeyVault(DockerImageName.parse("nagyesta/lowkey-vault:4.1.0-ubi9-minimal"))
                 .dependsOnContainer(mySQLContainer, sql -> Map.of(
                         "jdbc-url", mySQLContainer.getJdbcUrl(),

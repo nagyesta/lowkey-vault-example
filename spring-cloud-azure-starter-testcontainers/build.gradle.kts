@@ -35,7 +35,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     runtimeOnly("com.mysql:mysql-connector-j")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    testImplementation("org.testcontainers:mysql")
+    testImplementation("org.testcontainers:testcontainers-mysql")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers")
@@ -46,7 +46,7 @@ dependencyManagement {
         mavenBom("com.azure.spring:spring-cloud-azure-dependencies:6.0.0")
     }
     dependencies {
-        dependency("org.testcontainers:mysql:1.21.3")
+        dependency("org.testcontainers:testcontainers-mysql:2.0.1")
         dependency("org.testcontainers:junit-jupiter:1.21.3")
         dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:5.0.0")
     }
