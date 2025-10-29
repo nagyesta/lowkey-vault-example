@@ -13,10 +13,10 @@
   "github-actions": {
     "pinDigests": true
   },
-  "customManagers": [
+  "regexManagers": [
     {
-      "customType": "regex",
-      "managerFilePatterns": [
+      "description": "Testcontainers docker images",
+      "fileMatch": [
         "^.+\\.java$"
       ],
       "matchStrings": [
