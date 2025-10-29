@@ -17,7 +17,7 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/^.+\\.java$/"
+        "^.+\\.java$"
       ],
       "matchStrings": [
         "DockerImageName\\.parse\\(\\s*\"(?<depName>[^:]+):(?<currentValue>[^\"']+)\"\\s*\\)"
