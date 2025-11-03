@@ -2,7 +2,7 @@ plugins {
     id("java")
     id("org.springframework.boot") version "3.5.7"
     id("io.spring.dependency-management") version "1.1.7"
-    id("com.avast.gradle.docker-compose") version "0.17.18"
+    id("com.avast.gradle.docker-compose") version "0.17.19"
     checkstyle
 }
 
