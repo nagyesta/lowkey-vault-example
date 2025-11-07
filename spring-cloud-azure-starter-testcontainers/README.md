@@ -18,7 +18,6 @@ using Testcontainers.
 * [Application context root](./src/main/java/com/github/nagyesta/lowkeyvault/example/springcloudazurestarter/SpringCloudAzureStarterApplication.java)
 * [A bean using the property source](./src/main/java/com/github/nagyesta/lowkeyvault/example/springcloudazurestarter/MySqlConnectionCheck.java)
 * [Generic Property source configuration](./src/main/resources/application.properties)
-* [DEV Property source configuration for local runs](./src/main/resources/application-dev.properties)
 * [Test for the property resolution](./src/test/java/com/github/nagyesta/lowkeyvault/example/springcloudazurestarter/SpringCloudAzureStarterApplicationTests.java)
 * [Gradle configuration for tests](./build.gradle.kts#L55)
 * [Gradle configuration for Boot Run](./build.gradle.kts#L63)
