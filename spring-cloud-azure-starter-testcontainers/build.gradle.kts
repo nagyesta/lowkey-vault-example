@@ -64,7 +64,6 @@ tasks.register<JavaExec>("bootRunTestcontainers") {
     group = "application"
     classpath = sourceSets.test.get().runtimeClasspath
     mainClass.set("com.github.nagyesta.lowkeyvault.example.springcloudazurestarter.SpringCloudAzureStarterApplicationLocal")
-    systemProperty("spring.profiles.active", "dev")
     // Only needed if Assumed Identity and DefaultAzureCredential is used to simulate IMDS managed identity
     environment("IDENTITY_ENDPOINT", "http://localhost:10544/metadata/identity/oauth2/token")
     environment("IDENTITY_HEADER", "header")
