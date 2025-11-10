@@ -19,7 +19,7 @@ dependencies {
     implementation("io.quarkus:quarkus-arc")
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("org.testcontainers:testcontainers-mysql:2.0.1")
-    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:5.0.0")
+    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:5.0.14")
 }
 
 group = "com.github.nagyesta"
