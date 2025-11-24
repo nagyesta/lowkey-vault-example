@@ -1,8 +1,8 @@
 plugins {
     id("java")
-    id("org.springframework.boot") version "3.5.7"
+    id("org.springframework.boot") version "3.5.8"
     id("io.spring.dependency-management") version "1.1.7"
-    id("com.avast.gradle.docker-compose") version "0.17.19"
+    id("com.avast.gradle.docker-compose") version "0.17.20"
     checkstyle
 }
 

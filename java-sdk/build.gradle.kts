@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("org.springframework.boot") version "3.5.7"
+    id("org.springframework.boot") version "3.5.8"
     id("io.spring.dependency-management") version "1.1.7"
     checkstyle
 }
@@ -45,9 +45,9 @@ dependencies {
 
 dependencyManagement {
     dependencies {
-        dependency("org.springframework.boot:spring-boot-starter-web:3.5.7")
-        dependency("org.springframework.boot:spring-boot-configuration-processor:3.5.7")
-        dependency("org.springframework.boot:spring-boot-starter-test:3.5.7")
+        dependency("org.springframework.boot:spring-boot-starter-web:3.5.8")
+        dependency("org.springframework.boot:spring-boot-configuration-processor:3.5.8")
+        dependency("org.springframework.boot:spring-boot-starter-test:3.5.8")
         dependency("com.azure:azure-security-keyvault-secrets:4.10.4")
         dependency("com.azure:azure-security-keyvault-keys:4.10.4")
         dependency("com.azure:azure-security-keyvault-certificates:4.8.4")
