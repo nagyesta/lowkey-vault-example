@@ -24,7 +24,7 @@ class MicronautAkvDemoTest {
     static LowkeyVaultContainer lowkeyVaultContainer = lowkeyVaultContainer();
 
     static LowkeyVaultContainer lowkeyVaultContainer() {
-        final var imageName = DockerImageName.parse("nagyesta/lowkey-vault:7.0.3");
+        final var imageName = DockerImageName.parse("nagyesta/lowkey-vault:7.0.9");
         return LowkeyVaultContainerBuilder.lowkeyVault(imageName)
                 .hostTokenPort(10544)
                 .dependsOnContainer(mySqlContainer(), jdbcSecretSupplier("datasource"))
