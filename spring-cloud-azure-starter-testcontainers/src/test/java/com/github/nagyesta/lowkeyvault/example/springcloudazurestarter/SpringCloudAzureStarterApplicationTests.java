@@ -22,7 +22,7 @@ class SpringCloudAzureStarterApplicationTests {
     static LowkeyVaultContainer lowkeyVaultContainer = getLowkeyVaultContainer();
 
     static LowkeyVaultContainer getLowkeyVaultContainer() {
-        return lowkeyVault(DockerImageName.parse("nagyesta/lowkey-vault:7.0.3"))
+        return lowkeyVault(DockerImageName.parse("nagyesta/lowkey-vault:7.0.9"))
                 .hostTokenPort(10544)
                 .dependsOnContainer(getMySqlContainer(), springJdbcSecretSupplier())
                 .mergeTrustStores()
