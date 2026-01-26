@@ -36,7 +36,7 @@ class MicronautAkvDemoTest {
     }
 
     private static MySQLContainer mySqlContainer() {
-        final var imageName = DockerImageName.parse("mysql:9.5.0");
+        final var imageName = DockerImageName.parse("mysql:9.6.0");
         return new MySQLContainer(imageName);
     }
 
