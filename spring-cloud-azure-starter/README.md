@@ -20,8 +20,8 @@ using Docker Compose.
 * [Generic Property source configuration](./src/main/resources/application.properties)
 * [DEV Property source configuration for local runs](./src/main/resources/application-dev.properties)
 * [Test for the property resolution](./src/test/java/com/github/nagyesta/lowkeyvault/example/springcloudazurestarter/SpringCloudAzureStarterApplicationTests.java)
-* [Gradle configuration for tests](./build.gradle.kts#L60)
-* [Gradle configuration for Boot Run](./build.gradle.kts#L75)
+* [Gradle configuration for tests](./build.gradle.kts#L72)
+* [Gradle configuration for Boot Run](./build.gradle.kts#L87)
 
 Note: In order to better understand what is needed in general to make similar examples work, please find a generic overview [here](https://github.com/nagyesta/lowkey-vault/wiki/Example:-How-can-you-use-Lowkey-Vault-in-your-tests).
 

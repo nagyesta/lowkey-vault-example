@@ -57,10 +57,22 @@ dockerCompose {
     dockerComposeWorkingDirectory = project.file("${projectDir}/local")
 }
 
+var downloadCert = tasks.register("downloadCert") {
+    doLast {
+        ant.invokeMethod(
+            "get", mapOf(
+                "src" to "http://localhost:10544/metadata/default-cert/lowkey-vault.p12",
+                "dest" to layout.buildDirectory.file("lowkey-vault-keystore.p12").get().asFile.absolutePath
+            )
+        )
+    }
+    dependsOn(tasks.composeUp)
+}
+
 tasks.test {
     systemProperty("spring.profiles.active", "dev")
     useJUnitPlatform()
-    systemProperty("javax.net.ssl.trustStore", file("$projectDir/local/lowkey-vault/lowkey-vault-keystore.p12"))
+    systemProperty("javax.net.ssl.trustStore", layout.buildDirectory.file("lowkey-vault-keystore.p12").get().asFile.absolutePath)
     systemProperty("javax.net.ssl.trustStorePassword", "changeit")
     systemProperty("javax.net.ssl.trustStoreType", "PKCS12")
     // Only needed if Assumed Identity and DefaultAzureCredential is used to simulate IMDS managed identity
@@ -68,19 +80,19 @@ tasks.test {
     environment("IDENTITY_HEADER", "header")
     testLogging.showStandardStreams = true
     // make sure the containers are running
-    dependsOn(tasks.composeUp)
+    dependsOn(tasks.composeUp, downloadCert)
     finalizedBy(tasks.composeDown)
 }
 
 tasks.bootRun {
     systemProperty("spring.profiles.active", "dev")
-    systemProperty("javax.net.ssl.trustStore", file("$projectDir/local/lowkey-vault/lowkey-vault-keystore.p12"))
+    systemProperty("javax.net.ssl.trustStore", layout.buildDirectory.file("lowkey-vault-keystore.p12").get().asFile.absolutePath)
     systemProperty("javax.net.ssl.trustStorePassword", "changeit")
     systemProperty("javax.net.ssl.trustStoreType", "PKCS12")
     // Only needed if Assumed Identity and DefaultAzureCredential is used to simulate IMDS managed identity
     environment("IDENTITY_ENDPOINT", "http://localhost:10544/metadata/identity/oauth2/token")
     environment("IDENTITY_HEADER", "header")
     // make sure the containers are running
-    dependsOn(tasks.composeUp)
+    dependsOn(tasks.composeUp, downloadCert)
     finalizedBy(tasks.composeDown)
 }
