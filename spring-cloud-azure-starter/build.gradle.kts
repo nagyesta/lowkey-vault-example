@@ -42,7 +42,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("com.azure.spring:spring-cloud-azure-dependencies:6.1.0")
+        mavenBom("com.azure.spring:spring-cloud-azure-dependencies:7.0.0-beta.1")
     }
 }
 

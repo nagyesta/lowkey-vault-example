@@ -37,17 +37,17 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("org.testcontainers:testcontainers-mysql")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:testcontainers-junit-jupiter")
     testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers")
 }
 
 dependencyManagement {
     imports {
-        mavenBom("com.azure.spring:spring-cloud-azure-dependencies:6.1.0")
+        mavenBom("com.azure.spring:spring-cloud-azure-dependencies:7.0.0-beta.1")
     }
     dependencies {
         dependency("org.testcontainers:testcontainers-mysql:2.0.3")
-        dependency("org.testcontainers:junit-jupiter:1.21.4")
+        dependency("org.testcontainers:testcontainers-junit-jupiter:2.0.3")
         dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:7.1.0")
     }
 }
