@@ -14,7 +14,7 @@ val quarkusPlatformVersion: String by project
 
 dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
-    implementation("io.quarkiverse.azureservices:quarkus-azure-keyvault:1.2.1")
+    implementation("io.quarkiverse.azureservices:quarkus-azure-keyvault:1.2.2")
     implementation("io.quarkus:quarkus-jdbc-mysql")
     implementation("io.quarkus:quarkus-arc")
     testImplementation("io.quarkus:quarkus-junit5")
