@@ -24,7 +24,7 @@ dependencies {
     testImplementation("org.testcontainers:testcontainers-bom:2.0.3")
     testImplementation("org.testcontainers:testcontainers-junit-jupiter:2.0.3")
     testImplementation("org.testcontainers:testcontainers-mysql:2.0.3")
-    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:7.1.0")
+    testImplementation("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:7.1.13")
     testRuntimeOnly("org.slf4j:slf4j-simple")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
