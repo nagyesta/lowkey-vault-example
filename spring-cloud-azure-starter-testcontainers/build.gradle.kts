@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("org.springframework.boot") version "4.0.3"
+    id("org.springframework.boot") version "4.0.4"
     id("io.spring.dependency-management") version "1.1.7"
     checkstyle
 }
@@ -46,8 +46,8 @@ dependencyManagement {
         mavenBom("com.azure.spring:spring-cloud-azure-dependencies:7.1.0")
     }
     dependencies {
-        dependency("org.testcontainers:testcontainers-mysql:2.0.3")
-        dependency("org.testcontainers:testcontainers-junit-jupiter:2.0.3")
+        dependency("org.testcontainers:testcontainers-mysql:2.0.4")
+        dependency("org.testcontainers:testcontainers-junit-jupiter:2.0.4")
         dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:7.1.32")
     }
 }
