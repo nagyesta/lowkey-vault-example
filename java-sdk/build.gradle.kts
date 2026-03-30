@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("org.springframework.boot") version "4.0.4"
+    id("org.springframework.boot") version "4.0.5"
     id("io.spring.dependency-management") version "1.1.7"
     checkstyle
 }
@@ -45,12 +45,12 @@ dependencies {
 
 dependencyManagement {
     dependencies {
-        dependency("org.springframework.boot:spring-boot-starter-web:4.0.4")
-        dependency("org.springframework.boot:spring-boot-configuration-processor:4.0.4")
-        dependency("org.springframework.boot:spring-boot-starter-test:4.0.4")
-        dependency("com.azure:azure-security-keyvault-secrets:4.10.5")
-        dependency("com.azure:azure-security-keyvault-keys:4.10.5")
-        dependency("com.azure:azure-security-keyvault-certificates:4.8.5")
+        dependency("org.springframework.boot:spring-boot-starter-web:4.0.5")
+        dependency("org.springframework.boot:spring-boot-configuration-processor:4.0.5")
+        dependency("org.springframework.boot:spring-boot-starter-test:4.0.5")
+        dependency("com.azure:azure-security-keyvault-secrets:4.10.6")
+        dependency("com.azure:azure-security-keyvault-keys:4.10.6")
+        dependency("com.azure:azure-security-keyvault-certificates:4.8.6")
         dependency("com.azure:azure-identity:1.18.2")
         dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-client:7.1.32")
         dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:7.1.32")
