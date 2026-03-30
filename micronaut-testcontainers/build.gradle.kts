@@ -20,7 +20,7 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("com.mysql:mysql-connector-j")
-    implementation("com.azure:azure-security-keyvault-secrets:4.10.5")
+    implementation("com.azure:azure-security-keyvault-secrets:4.10.6")
     testImplementation("org.testcontainers:testcontainers-bom:2.0.4")
     testImplementation("org.testcontainers:testcontainers-junit-jupiter:2.0.4")
     testImplementation("org.testcontainers:testcontainers-mysql:2.0.4")
