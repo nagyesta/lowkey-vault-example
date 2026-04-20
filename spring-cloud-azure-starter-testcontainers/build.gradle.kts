@@ -43,7 +43,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom("com.azure.spring:spring-cloud-azure-dependencies:7.1.0")
+        mavenBom("com.azure.spring:spring-cloud-azure-dependencies:7.2.0")
     }
     dependencies {
         dependency("org.testcontainers:testcontainers-mysql:2.0.4")
