@@ -1,5 +1,5 @@
 plugins {
-    id("io.micronaut.application") version "4.6.2"
+    id("io.micronaut.application") version "5.0.0"
     id("io.micronaut.test-resources") version "4.6.2"
     id("io.micronaut.aot") version "4.6.2"
 }
