@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/nagyesta/lowkey-vault-example?color=informational)](https://raw.githubusercontent.com/nagyesta/lowkey-vault-example/main/LICENSE)
 [![Lowkey secure](https://img.shields.io/badge/lowkey-secure-0066CC)](https://github.com/nagyesta/lowkey-vault)
-[![Java version](https://img.shields.io/badge/Java%20version-17-yellow?logo=java)](https://img.shields.io/badge/Java%20version-17-yellow?logo=java)
+[![Java version](https://img.shields.io/badge/Java%20version-25-yellow?logo=java)](https://img.shields.io/badge/Java%20version-25-yellow?logo=java)
 
 # Lowkey Vault - Example - Micronaut with Testcontainers
 
