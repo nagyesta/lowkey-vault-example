@@ -1,7 +1,7 @@
 plugins {
-    id("io.micronaut.application") version "4.6.2"
+    id("io.micronaut.application") version "5.0.0"
     id("io.micronaut.test-resources") version "4.6.2"
-    id("io.micronaut.aot") version "4.6.2"
+    id("io.micronaut.aot") version "5.0.0"
 }
 
 version = "0.1"
@@ -20,7 +20,7 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("com.mysql:mysql-connector-j")
-    implementation("com.azure:azure-security-keyvault-secrets:4.11.0")
+    implementation("com.azure:azure-security-keyvault-secrets:4.10.7")
     testImplementation("org.testcontainers:testcontainers-bom:2.0.5")
     testImplementation("org.testcontainers:testcontainers-junit-jupiter:2.0.5")
     testImplementation("org.testcontainers:testcontainers-mysql:2.0.5")
@@ -34,8 +34,8 @@ application {
     mainClass = "com.github.nagyesta.lowkeyvault.example.micronaut.Application"
 }
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 }
 
 
@@ -67,7 +67,7 @@ micronaut {
 
 
 tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
-    jdkVersion = "17"
+    jdkVersion = "25"
 }
 
 tasks.test {

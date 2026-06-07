@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        module: [ java-sdk, spring, spring-tc, micronaut-tc ]
+        module: [ java-sdk, spring, spring-tc, micronaut-tc, quarkus-tc ]
         include:
           - module: java-sdk
             name: Java SDK with Testcontainers
@@ -37,7 +37,7 @@ jobs:
             folder: spring-cloud-azure-starter-testcontainers
           - module: micronaut-tc
             name: Micronaut Testcontainers
-            jdk: 17
+            jdk: 25
             folder: micronaut-testcontainers
           - module: quarkus-tc
             name: Quarkus Testcontainers
