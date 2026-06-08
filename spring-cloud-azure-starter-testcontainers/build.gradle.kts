@@ -48,7 +48,7 @@ dependencyManagement {
     dependencies {
         dependency("org.testcontainers:testcontainers-mysql:2.0.5")
         dependency("org.testcontainers:testcontainers-junit-jupiter:2.0.5")
-        dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:7.2.18")
+        dependency("com.github.nagyesta.lowkey-vault:lowkey-vault-testcontainers:7.3.0")
     }
 }
 
