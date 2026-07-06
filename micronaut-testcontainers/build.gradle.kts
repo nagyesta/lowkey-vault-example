@@ -1,7 +1,7 @@
 plugins {
-    id("io.micronaut.application") version "5.0.1"
-    id("io.micronaut.test-resources") version "5.0.1"
-    id("io.micronaut.aot") version "5.0.1"
+    id("io.micronaut.application") version "5.0.2"
+    id("io.micronaut.test-resources") version "5.0.2"
+    id("io.micronaut.aot") version "5.0.2"
 }
 
 version = "0.1"
@@ -20,7 +20,7 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("com.mysql:mysql-connector-j")
-    implementation("com.azure:azure-security-keyvault-secrets:4.11.0")
+    implementation("com.azure:azure-security-keyvault-secrets:4.11.1")
     testImplementation("org.testcontainers:testcontainers-bom:2.0.5")
     testImplementation("org.testcontainers:testcontainers-junit-jupiter:2.0.5")
     testImplementation("org.testcontainers:testcontainers-mysql:2.0.5")
