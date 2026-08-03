@@ -31,7 +31,7 @@ class SpringCloudAzureStarterApplicationTests {
     }
 
     private static MySQLContainer getMySqlContainer() {
-        final var imageName = DockerImageName.parse("mysql:9.7.1");
+        final var imageName = DockerImageName.parse("mysql:9.7.2");
         return new MySQLContainer(imageName);
     }
 
