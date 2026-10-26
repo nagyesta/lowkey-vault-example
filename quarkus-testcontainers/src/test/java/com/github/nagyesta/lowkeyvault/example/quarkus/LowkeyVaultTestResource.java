@@ -16,8 +16,8 @@ public class LowkeyVaultTestResource implements QuarkusTestResourceLifecycleMana
 
     @Override
     public Map<String, String> start() {
-        mySQLContainer = new MySQLContainer(DockerImageName.parse("mysql:26.7.0"));
-        lowkeyVaultContainer = lowkeyVault(DockerImageName.parse("nagyesta/lowkey-vault:7.3.74-ubi10-minimal"))
+        mySQLContainer = new MySQLContainer(DockerImageName.parse("mysql:26.10.0"));
+        lowkeyVaultContainer = lowkeyVault(DockerImageName.parse("nagyesta/lowkey-vault:7.3.127-ubi10-minimal"))
                 .dependsOnContainer(mySQLContainer, sql -> Map.of(
                         "jdbc-url", mySQLContainer.getJdbcUrl(),
                         "jdbc-user", mySQLContainer.getUsername(),
